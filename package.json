@@ -1,5 +1,5 @@
 {
-  "name": "rapid-prototype",
+  "name": "frontex-dataviz",
   "description": "",
   "dependencies": {
     "autoprefixer-stylus": "0.8.x",
