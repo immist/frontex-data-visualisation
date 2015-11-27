@@ -1,7 +1,66 @@
 @import '_settings'
+@import '_typographic'
 
-normalize-css()
-base()
+reset-css()
+typographic()
 
 body
-  padding: 50px
+    margin 0
+
+section
+    size 100vw 100vh
+    relative()
+    overflow hidden
+    display flex
+
+.u-vBlock
+    margin-top vr-block(4)
+
+.Caption
+    width vr-block(10)
+    height vr-block(10)
+    absolute top vr-block(8) right vr-block(2)
+    &-title
+        t-h3()
+    &-text
+        font-style italic
+
+.BigNumber
+    t-h1()
+    font-weight bold
+.IntroHeadline
+    t-h4()
+
+.Footer
+    background black
+    color white
+    padding vr-block(2)
+
+#Intro
+    text-align center
+    background red
+    color white
+    flex-direction column
+    justify-content center
+
+#Routes
+    background green
+    color white
+
+#Nationalities
+    background lightgreen
+
+#Refusals
+    background yellow
+
+#StayersOnExit
+    background lightgreen
+
+#Stayers
+    background yellow
+
+#Facilitators
+    background lightgreen
+
+#Returns
+    background yellow
