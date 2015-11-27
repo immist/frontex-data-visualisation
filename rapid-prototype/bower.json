@@ -1,0 +1,22 @@
+{
+  "name": "rapid-prototype",
+  "version": "0.0.0",
+  "homepage": "https://github.com/immist/data-viz",
+  "authors": [
+    "Jan Wirth <jottenwe@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.9"
+  }
+}
