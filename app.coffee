@@ -8,7 +8,16 @@ module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', 'ship.*conf']
 
   extensions: [
-    js_pipeline(files: 'assets/js/*.coffee'),
+    js_pipeline(files: [
+        'bower_components/**/jquery.min.js',
+        'bower_components/topojson/topojson.js',
+        'bower_components/d3/d3.js',
+        'bower_components/**/datamaps.all.min.js',
+        'assets/js/prepare.coffee'
+        'assets/js/statistics/*.js'
+        'assets/js/*.coffee'
+        ]
+        ),
     css_pipeline(files: 'assets/css/*.styl')
   ]
 
