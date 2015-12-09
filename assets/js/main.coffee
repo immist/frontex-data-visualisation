@@ -7,7 +7,6 @@ class FrontexMap
             element: @map
 
         @wrap = d3.select('.Map-wrap')[0]
-        console.log 'wrap', @wrap
 
         @svg = d3.select('.datamap')
 
@@ -46,8 +45,6 @@ class FrontexMap
     views:
         # default: '0 0 1680 928'
         default: [0,0,1,1]
-        test: [0.1,0.1,0.9,0.9]
-        europe: '750 180 300 210'
         eu: [0.446, 0.19, 0.1, 0.226]
 
 
