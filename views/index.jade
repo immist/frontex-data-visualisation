@@ -2,7 +2,9 @@ extends layout
 
 block content
 
-    .Map-wrap: .Map#map
+    .Map-wrap
+        .Map#map
+        .Refusals
 
     section#Intro
         .IntroHeadline Frontex Risk Analysis Network Q2 2015
@@ -14,7 +16,9 @@ block content
     section#Routes
         .Caption 
             .Caption-title Routes
-            .Caption-text Detections of illegal border- crossing at the EU’s external borders, Q2 2015
+            .Caption-text Detections of illegal border- crossing at the 
+                a EU’s external borders
+                |, Q2 2015
 
     section#Nationalities
         .Caption 
@@ -50,3 +54,4 @@ block content
 
     footer.Footer
         .Footer-entry A project by Immanuel Sterzik, Lisa Vogt and Jan Wirth
+        .Footer-entry Made with roots.cx and d3.js

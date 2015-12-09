@@ -15,7 +15,9 @@ module.exports =
         'bower_components/**/datamaps.all.min.js',
         'assets/js/prepare.coffee'
         'assets/js/statistics/*.js'
-        'assets/js/*.coffee'
+        'assets/js/refusals.coffee'
+        'assets/js/routes.coffee'
+        'assets/js/main.coffee'
         ]
         ),
     css_pipeline(files: 'assets/css/*.styl')

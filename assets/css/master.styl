@@ -1,11 +1,15 @@
 @import '_settings'
 @import '_typographic'
 
+offDark = #167A8B
+intenseDark = #111
+
 reset-css()
 typographic()
 
 body
     margin 0
+    letter-spacing vr-block(0.03)
 
 section
     size 100vw 100vh
@@ -16,14 +20,23 @@ section
 .u-vBlock
     margin-top vr-block(4)
 
+light = #2DEA8F
+offLight = #24B273
 .Caption
+    color light
     width vr-block(10)
     height vr-block(10)
     absolute top vr-block(8) right vr-block(2)
     &-title
         t-h3()
-    &-text
-        font-style italic
+        color offLight
+        font-weight 100
+    &-text a
+        padding vr-block(0.1)
+        margin vr-block(-0.1)
+        border-bottom vr-block(0.05) solid offLight
+        &:hover
+            background-color intenseDark
 
 .BigNumber
     t-h1()
@@ -32,7 +45,7 @@ section
     t-h4()
 
 .Footer
-    background black
+    background intenseDark
     color white
     padding vr-block(2)
 
@@ -74,4 +87,30 @@ section
 .datamap
     width 1682px
     height 928px
+
+
+.Refusals
+    padding vr-block(2)
+
+.link
+    stroke black
+    fill transparent
+    stroke-linecap round
+
+.country
+    pointer-events none
+.node
+    cursor pointer
+svg
+    user-select none
+    cursor default
+
+.datamaps-subunit
+    fill red
+
+dark = #243D44
+
+section
+    background dark !important
+    border-bottom vr-block(0.1) solid offDark
 
