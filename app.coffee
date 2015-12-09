@@ -15,6 +15,7 @@ module.exports =
         'bower_components/**/datamaps.all.min.js',
         'assets/js/prepare.coffee'
         'assets/js/statistics/*.js'
+        'assets/js/Vizualisation.coffee'
         'assets/js/refusals.coffee'
         'assets/js/routes.coffee'
         'assets/js/main.coffee'

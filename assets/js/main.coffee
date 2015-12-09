@@ -1,58 +1,31 @@
 
-class FrontexMap
+defaultViewBoxDimensions =
+    [
+        1682,
+        928
+    ]
+
+class FrontexMap extends Visualization
 
     constructor: (selector) ->
-        @map = $(selector)[0]
-        @vizualisation = new Datamap
+        # append instead of select
+        mapWrap = $(selector)
+        mapWrap.append '<div id="map"></div>'
+        @map = mapWrap.find('#map')[0]
+        @map.style.width = defaultViewBoxDimensions[0] + 'px'
+        @map.style.height =defaultViewBoxDimensions[1] + 'px'
+
+        @visualization = new Datamap
             element: @map
-
-        @wrap = d3.select('.Map-wrap')[0]
-
         @svg = d3.select('.datamap')
 
-        # dimensions the map is initialised with
-        @dimensions =
+        @views =
+            default: [0,0,1,1]
+            eu: [0.5, 0.19, 0.1, 0.226]
 
-            original:
-                x: @map.offsetWidth
-                y: @map.offsetHeight
-
-            scale: (dimension) -> @current[dimension] / @original[dimension]
-
-        # rescale map on window resize
-        @currentFocus = 'default'
-        @setViewBox()
-        window.onresize = @setViewBox
-
-    # update viewbox of map
-    setViewBox: () =>
-        @dimensions.current =
-            x: window.innerWidth
-            y: window.innerHeight
-        viewBox = ''
-        for val, i in @views[@currentFocus]
-            if i == 0
-                viewBox += val *  @dimensions.original['x'] + ' '
-            if i == 1
-                viewBox += val * @dimensions.original['y'] + ' '
-            if i == 2
-                viewBox += val / @dimensions.scale('x') * @dimensions.original['x'] + ' ' # width = correct
-            if i == 3
-                viewBox += val / @dimensions.scale('y') * @dimensions.original['y'] + ' ' # height = correct
-
-        return @svg.transition().attr 'viewBox', viewBox
-
-    views:
-        # default: '0 0 1680 928'
-        default: [0,0,1,1]
-        eu: [0.446, 0.19, 0.1, 0.226]
+        @makeResponsive()
 
 
-    applyFocus: (area, smoothDuration) ->
-        @currentFocus = area
-        zoom = @setViewBox()
-        if smoothDuration?
-            zoom.duration(smoothDuration)
 
 
 class FrontexVisualisation
@@ -60,4 +33,5 @@ class FrontexVisualisation
         @map = new FrontexMap @mapSelector
         @map.applyFocus 'eu'
 
-new FrontexVisualisation window.data, '#map'
+
+new FrontexVisualisation window.data, '#Visualizations'
