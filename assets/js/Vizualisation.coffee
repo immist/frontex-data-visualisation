@@ -1,10 +1,11 @@
 class @Visualization
-    makeResponsive: ->
+    makeResponsive: (dimensions) ->
         # dimensions the map is initialised with
+        console.log dimensions
         @dimensions =
             original:
-                x: @svg[0][0].offsetWidth
-                y: @svg[0][0].offsetHeight
+                x: dimensions[0]
+                y: dimensions[1]
 
             scale: (dimension) -> @current[dimension] / @original[dimension]
 

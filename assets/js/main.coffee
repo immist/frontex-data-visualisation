@@ -7,13 +7,13 @@ defaultViewBoxDimensions =
 
 class FrontexMap extends Visualization
 
-    constructor: (selector) ->
+    constructor: (selector, dimensions) ->
         # append instead of select
         mapWrap = $(selector)
         mapWrap.append '<div id="map"></div>'
         @map = mapWrap.find('#map')[0]
-        @map.style.width = defaultViewBoxDimensions[0] + 'px'
-        @map.style.height =defaultViewBoxDimensions[1] + 'px'
+        @map.style.width  = dimensions[0] + 'px'
+        @map.style.height = dimensions[1] + 'px'
 
         @visualization = new Datamap
             element: @map
@@ -23,15 +23,18 @@ class FrontexMap extends Visualization
             default: [0,0,1,1]
             eu: [0.5, 0.19, 0.1, 0.226]
 
-        @makeResponsive()
+        @makeResponsive(dimensions)
 
 
 
 
 class FrontexVisualisation
-    constructor: (@rawdata, @mapSelector) ->
-        @map = new FrontexMap @mapSelector
-        @map.applyFocus 'eu'
+    constructor: (@rawdata, @selector) ->
+        # @map = new FrontexMap @selector, defaultViewBoxDimensions
+        # @map.applyFocus 'eu'
+        @refusals = new RefusalsTree(@selector, defaultViewBoxDimensions)
+
+
 
 
 new FrontexVisualisation window.data, '#Visualizations'
