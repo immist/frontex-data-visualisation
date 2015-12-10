@@ -33,6 +33,29 @@ class FrontexVisualisation
         # @map = new FrontexMap @selector, defaultViewBoxDimensions
         # @map.applyFocus 'eu'
         @refusals = new RefusalsTree(@selector, defaultViewBoxDimensions)
+        @visualizationsWrap = $(@selector)
+        $(window).resize (e) ->
+        $(window).scroll (e) =>
+            # append class to #viz container
+            newSection = @getCurrentSection()
+
+            if newSection != @currentSection
+                @visualizationsWrap.attr 'class', 'is-focusedOn' + newSection
+                @currentSection = newSection
+
+        @updateSectionPositions()
+        @currentSection = @getCurrentSection()
+
+    getCurrentSection: ->
+        scrollPosition = $(window).scrollTop()
+        for section in @sectionPositions
+            if scrollPosition > section.position
+                currentSection = section.id
+        return currentSection
+
+    updateSectionPositions: ->
+        sections = $('.Section')
+        @sectionPositions = ({id: section.id, position: section.offsetTop} for section in sections)
 
 
 
