@@ -16,6 +16,7 @@ module.exports =
         'assets/js/prepare.coffee'
         'assets/js/statistics/*.js'
         'assets/js/Vizualisation.coffee'
+        'assets/js/map.coffee'
         'assets/js/refusals.coffee'
         'assets/js/routes.coffee'
         'assets/js/main.coffee'
