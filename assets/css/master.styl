@@ -1,8 +1,13 @@
 @import '_settings'
 @import '_typographic'
+@import '_storyBoard'
 
 offDark = #167A8B
 intenseDark = #111
+light = #2DEA8F
+offLight = #24B273
+dark = #243D44
+dark = #243D44
 
 reset-css()
 typographic()
@@ -10,23 +15,26 @@ typographic()
 body
     margin 0
     letter-spacing vr-block(0.03)
+    background dark
 
-section
+.Section
     size 100vw 100vh
     relative()
     overflow hidden
     display flex
+    align-items center
+    justify-content flex-end
+    transition background 0.3s ease-out
 
 .u-vBlock
     margin-top vr-block(4)
 
-light = #2DEA8F
-offLight = #24B273
 .Caption
+    z-index 100
     color light
     width vr-block(10)
-    height vr-block(10)
-    absolute top vr-block(8) right vr-block(2)
+    margin-right vr-block(3)
+    relative()
     &-title
         t-h3()
         color offLight
@@ -37,6 +45,12 @@ offLight = #24B273
         border-bottom vr-block(0.05) solid offLight
         &:hover
             background-color intenseDark
+    &:before
+        content ''
+        absolute top vr-block(2) left vr-block(1)
+        background-color transparentify(dark, dark, 0.8)
+        size 100%
+        z-index -1
 
 .BigNumber
     t-h1()
@@ -51,33 +65,9 @@ offLight = #24B273
 
 #Intro
     text-align center
-    background red
     color white
     flex-direction column
     justify-content center
-
-#Routes
-    background green
-    color white
-
-#Nationalities
-    background lightgreen
-
-#Refusals
-    background yellow
-
-#StayersOnExit
-    background lightgreen
-
-#Stayers
-    background yellow
-
-#Facilitators
-    background lightgreen
-
-#Returns
-    background yellow
-
 
 .Map
     &-wrap
@@ -94,7 +84,8 @@ offLight = #24B273
     padding vr-block(2)
 
 .link
-    stroke black
+    stroke light
+    opacity 0.3
     fill transparent
     stroke-linecap round
 
@@ -110,15 +101,11 @@ svg
     fill red
     stroke-width 0.1 !important
 
-dark = #243D44
 
 #Visualizations
     fixed top 0 left 0
     size 100vw 100vh
-    z-index 100
-
-section
-    background dark !important
-    border-bottom vr-block(0.1) solid offDark
-
+    z-index 50
+.datamaps-subunit
+    fill intenseDark !important
 
