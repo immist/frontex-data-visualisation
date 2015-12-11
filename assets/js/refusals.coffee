@@ -20,12 +20,21 @@ treeData =
             name: 'Q4 2014'
             parent: 'Total illegal border crossings'
             _children: []
+        ,
+            name: 'Q1 2015'
+            parent: 'Total illegal border crossings'
+            _children: []
+        ,
+            name: 'Q2 2015'
+            parent: 'Total illegal border crossings'
+            _children: []
         ]
     ]
 
 for country, data of window.data.crossings
     window.data.crossings[country] = data.map (number) -> parseInt number.replace(/\s+/g, '')
 
+delete window.data.crossings['Total All Borders']
 for country, data of window.data.crossings # for each country
     numbers = []
     for quarter,i in treeData[0].children # select data for each quarter
@@ -37,6 +46,7 @@ for country, data of window.data.crossings # for each country
     for quarter,i in treeData[0].children # select data for each quarter
         treeData[0].children[i].value = 0
         treeData[0].children[i].value += window.data.crossings[country][i]
+
     for quarter,i in treeData[0].children # select data for each quarter
         treeData[0].value += treeData[0].children[i].value
 
@@ -54,19 +64,15 @@ class @RefusalsTree extends Visualization
     constructor: (@selector, dimensions) ->
         @views =
             default: [0,0,1,1]
-        @init dimensions
-        @makeResponsive dimensions
-
-    init: (dimensions) ->
 
         height = '400'
 
         tree = d3.layout.tree()
             .size [height * 2, height * 4]
 
-        @svg = d3.select '#Visualizations'
+        svg = d3.select '#Visualizations'
             .append 'svg'
-            .attr 'id', '#tree'
+            .attr 'id', 'RefusalsTree'
             .attr 'width',  dimensions[0]
             .attr 'height', dimensions[1]
 
@@ -95,7 +101,7 @@ class @RefusalsTree extends Visualization
             nodes = tree.nodes(root).reverse()
             links = tree.links(nodes)
 
-            node = @svg.selectAll("g.node").data nodes, (d) ->
+            node = svg.selectAll("g.node").data nodes, (d) ->
                 d.id || (d.id = ++i)
 
             nodes.forEach (d) -> d.y = (d.depth + 0.5) * 400
@@ -145,7 +151,7 @@ class @RefusalsTree extends Visualization
             nodeExit = node.exit()
                 .attr "opacity", 0
 
-            link = @svg.selectAll 'path.link'
+            link = svg.selectAll 'path.link'
                 .data links, (d) -> d.target.id
 
             calculateLink = (d) ->
@@ -160,8 +166,7 @@ class @RefusalsTree extends Visualization
             link.enter().insert 'path', 'g'
                 .attr 'd', calculateLink
                 .attr 'stroke-width', (d) ->
-                    d.target.value / 10000
-
+                    d.target.value / 1000
                 .attr 'class', 'link'
             link
                 .attr("d", diagonal)
@@ -176,3 +181,4 @@ class @RefusalsTree extends Visualization
                 d.x0 = d.x
                 d.y0 = d.y
         update root
+        super dimensions, svg

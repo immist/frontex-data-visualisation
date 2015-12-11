@@ -17,24 +17,23 @@ class FrontexMap extends Visualization
 
         @visualization = new Datamap
             element: @map
-        @svg = d3.select('.datamap')
+        svg = d3.select('.datamap')
 
         @views =
             default: [0,0,1,1]
             eu: [0.5, 0.19, 0.1, 0.226]
 
-        @makeResponsive(dimensions)
+        super dimensions, svg
 
 
 
 
 class FrontexVisualisation
     constructor: (@rawdata, @selector) ->
-        # @map = new FrontexMap @selector, defaultViewBoxDimensions
-        # @map.applyFocus 'eu'
         @refusals = new RefusalsTree(@selector, defaultViewBoxDimensions)
+        @map = new FrontexMap @selector, defaultViewBoxDimensions
+        @map.applyFocus 'eu'
         @visualizationsWrap = $(@selector)
-        $(window).resize (e) ->
         $(window).scroll (e) =>
             # append class to #viz container
             newSection = @getCurrentSection()
@@ -45,11 +44,12 @@ class FrontexVisualisation
 
         @updateSectionPositions()
         @currentSection = @getCurrentSection()
+        @visualizationsWrap.attr 'class', 'is-focusedOn' + @currentSection
 
     getCurrentSection: ->
         scrollPosition = $(window).scrollTop()
         for section in @sectionPositions
-            if scrollPosition > section.position
+            if scrollPosition > (section.position - 200)
                 currentSection = section.id
         return currentSection
 
