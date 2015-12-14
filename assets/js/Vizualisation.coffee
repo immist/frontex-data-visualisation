@@ -14,21 +14,19 @@ class @Visualization
 
     # update viewbox of map
     setViewBox: =>
-        console.log @svg
-        console.log this
         @dimensions.current =
             x: window.innerWidth
             y: window.innerHeight
         viewBox = ''
-        for val, i in @views[@currentFocus]
+        for value, i in @views[@currentFocus]
             if i == 0
-                viewBox += val * @dimensions.original['x'] + ' '
+                viewBox += value * @dimensions.original['x'] + ' '
             if i == 1
-                viewBox += val * @dimensions.original['y'] + ' '
+                viewBox += value * @dimensions.original['y'] + ' '
             if i == 2
-                viewBox += val / @dimensions.scale('x') * @dimensions.original['x'] + ' ' # width = correct
+                viewBox += value / @dimensions.scale('x') * @dimensions.original['x'] + ' ' # width = correct
             if i == 3
-                viewBox += val / @dimensions.scale('y') * @dimensions.original['y'] + ' ' # height = correct
+                viewBox += value / @dimensions.scale('y') * @dimensions.original['y'] + ' ' # height = correct
 
         return @svg.transition().attr 'viewBox', viewBox
 

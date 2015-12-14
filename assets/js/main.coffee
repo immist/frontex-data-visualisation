@@ -1,13 +1,14 @@
 
 defaultViewBoxDimensions =
     [
-        1682,
-        928
+        1600,
+        900
     ]
 
 
 class FrontexVisualisation
     constructor: (@rawdata, @selector) ->
+        @crossings = new CrossingsBarChart(@selector, defaultViewBoxDimensions)
         @refusals = new RefusalsTree(@selector, defaultViewBoxDimensions)
         @map = new FrontexMap @selector, defaultViewBoxDimensions
         @map.applyFocus 'euFar'

@@ -88,6 +88,11 @@ body
     opacity 0.3
     fill transparent
     stroke-linecap round
+    &:hover
+        stroke red
+        opacity 0.9
+        z-index 200
+        relative()
 
 .country
     pointer-events none
@@ -98,8 +103,12 @@ svg
     cursor default
 
 .datamaps-subunit
-    fill red
-    stroke-width 0.1 !important
+    stroke-width 0.3 !important
+    stroke offDark !important
+.datamaps
+    &-arc
+        stroke-width 0.3 !important
+        stroke linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%) !important
 
 
 #Visualizations

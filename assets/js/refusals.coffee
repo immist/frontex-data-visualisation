@@ -32,7 +32,7 @@ treeData =
     ]
 
 for country, data of window.data.crossings
-    window.data.crossings[country] = data.map (number) -> parseInt number.replace(/\s+/g, '')
+    window.data.crossings[country] = data.map toNumber
 
 delete window.data.crossings['Total All Borders']
 for country, data of window.data.crossings # for each country

@@ -1,5 +1,4 @@
 class @FrontexMap extends Visualization
-
     constructor: (selector, dimensions) ->
         # append instead of select
         mapWrap = $(selector)
@@ -8,7 +7,6 @@ class @FrontexMap extends Visualization
         @map.style.width  = dimensions[0] + 'px'
         @map.style.height = dimensions[1] + 'px'
 
-        console.log d3.geo
         @visualization = new Datamap
             element: @map
             setProjection: (element, options) ->
@@ -24,6 +22,14 @@ class @FrontexMap extends Visualization
             euClose: [0.277, 0.178, 0.04, 0.045]
 
         super dimensions, svg
-
-
-
+        @visualization.arc [
+                origin:
+                    latitude: 38.311
+                    longitude: 24.489
+                destination:
+                    latitude: -40
+                    longitude: 30
+                options:
+                    greatArc: true
+                    arcSharpness: 0.3
+            ]
