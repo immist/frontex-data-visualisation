@@ -7,6 +7,7 @@ light = #2DEA8F
 offLight = #24B273
 dark = #243D44
 dark = #243D44
+highlight = #C44F74
 
 reset-css()
 typographic()
@@ -59,6 +60,31 @@ body
     font-weight bold
 .IntroHeadline
     t-h4()
+
+.Visualization
+    absolute top 0 left 0
+    size 100%
+    &-controls
+        display flex
+        absolute bottom 0 left 0
+    &-controlButton
+        padding vr-block(0.5) vr-block(1)
+        background offLight
+        color dark
+        transition 0.3s $ease-out-quart
+        border none
+        reltive()
+        &.is-Selected
+            transform translateX(vr-block(0.2)) translateY(vr-block(0.2))
+            background offDark
+            color offLight
+            z-index -1
+        &:hover
+            background highlight
+            color light
+            transform translateX(vr-block(-0.2)) translateY(vr-block(-0.2))
+
+
 
 
 // section styles
