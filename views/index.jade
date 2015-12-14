@@ -2,53 +2,46 @@ extends layout
 
 block content
 
-    #Visualizations
-
     section.Section#Intro
         .IntroHeadline Frontex Risk Analysis Network Q2 2015
-        .BigNumber 3948539
+        .BigNumber#TotalImmigrantsCounter 123456789
         .SmallText Immigrants in EU total in 2015
 
 
     section.Section#Routes
         .Caption 
             .Caption-title Routes
-            .Caption-text Detections of illegal border- crossing at the 
-                a EU’s external borders
-                |, Q2 2015
+            .Caption-text Detections of illegal border- crossing at the EU’s external borders, Q2 2015
 
     section.Section#Refusals
         .Caption 
             .Caption-title Refusals per border type, Q2 2015
             .Caption-text In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. 
+        .Visualization
+            svg.Visualisation-graphic
+            .Visualization-controls
+                .Visualization-controlButton Total
+                .Visualization-controlButton Land
+                .Visualization-controlButton Sea
+                .Visualization-controlButton Air
 
     section.Section#CrossingNationalities
         .Caption 
             .Caption-title Nationalities of illegal border crossers
             .Caption-text Main nationalities of illegal border-crossers, April–June 2015
-
-    section.Section#StayersOnExit
-        .Caption 
-            .Caption-title Illegal stayers on exit
-            .Caption-text 
+        .Visualization
+            svg.Visualisation-graphic
+            .Visualization-controls
+                .Visualization-controlButton Total
+                .Visualization-controlButton Land
+                .Visualization-controlButton Sea
 
     section.Section#Stayers
         .Caption 
             .Caption-title Illegal stayers
             .Caption-text 
-
-    section.Section#Facilitators
-        .Caption 
-            .Caption-title Facilitators
-            .Caption-text 
-
-    section.Section#Returns
-        .Caption 
-            .Caption-title Returns
-            .Caption-text 
-
-
-
-    footer.Footer
-        .Footer-entry A project by Immanuel Sterzik, Lisa Vogt and Jan Wirth
-        .Footer-entry Made with roots.cx and d3.js
+        .Visualization
+            svg.Visualisation-graphic
+            .Visualization-controls
+                .Visualization-controlButton By nationalities
+                .Visualization-controlButton By place of detection
