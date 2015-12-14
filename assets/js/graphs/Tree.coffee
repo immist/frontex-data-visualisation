@@ -58,7 +58,7 @@ for country, data of window.data.crossings # for each country
 
 
 
-class @RefusalsTree extends Visualization
+class @RefusalsTree
     @dimensions: {}
 
     constructor: (@selector, dimensions) ->
@@ -181,4 +181,3 @@ class @RefusalsTree extends Visualization
                 d.x0 = d.x
                 d.y0 = d.y
         update root
-        super dimensions, svg

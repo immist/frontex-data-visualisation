@@ -12,7 +12,7 @@ for country, data of window.data.crossings
 
 
 
-class @CrossingsBarChart extends Visualization
+class @CrossingsBarChart
     constructor: (@selector, dimensions) ->
         @views =
             default: [0,0,1,1]

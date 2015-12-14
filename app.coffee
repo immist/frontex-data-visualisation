@@ -13,13 +13,13 @@ module.exports =
         'bower_components/topojson/topojson.js',
         'bower_components/d3/d3.js',
         'bower_components/**/datamaps.all.min.js',
+
         'assets/js/prepare.coffee'
         'assets/js/statistics/*.js'
-        'assets/js/Vizualisation.coffee'
-        'assets/js/map.coffee'
-        'assets/js/crossings.coffee'
-        'assets/js/refusals.coffee'
-        'assets/js/routes.coffee'
+
+        'assets/js/map/*.coffee'
+        'assets/js/graphs/*.coffee'
+
         'assets/js/main.coffee'
         ]
         ),

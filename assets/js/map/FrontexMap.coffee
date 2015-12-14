@@ -1,4 +1,4 @@
-class @FrontexMap extends Visualization
+class @FrontexMap
     constructor: (selector, dimensions) ->
         # append instead of select
         mapWrap = $(selector)
@@ -21,7 +21,6 @@ class @FrontexMap extends Visualization
             euFar: [0.25, 0.15, 0.1, 0.1]
             euClose: [0.277, 0.178, 0.04, 0.045]
 
-        super dimensions, svg
         @visualization.arc [
                 origin:
                     latitude: 38.311
