@@ -1,11 +1,15 @@
 class @FrontexMap
-    constructor: (selector, dimensions) ->
+    applyFocus: (focus, transition) ->
+        @svg.attr 'viewBox', getViewBox @views[focus]
+        console.log 'yo'
+
+    constructor: ->
         # append instead of select
-        mapWrap = $(selector)
+        mapWrap = $('#FrontexMap')
         mapWrap.append '<div id="map"></div>'
         @map = mapWrap.find('#map')[0]
-        @map.style.width  = dimensions[0] + 'px'
-        @map.style.height = dimensions[1] + 'px'
+        @map.style.width  = defaultWidth + 'px'
+        @map.style.height = defaultHeight + 'px'
 
         @visualization = new Datamap
             element: @map
@@ -14,7 +18,7 @@ class @FrontexMap
                 path = d3.geo.path()
                     .projection( projection )
                 return {path: path, projection: projection}
-        svg = d3.select('.datamap')
+        @svg = d3.select('#map .datamap')
 
         @views =
             default: [0,0,1,1]

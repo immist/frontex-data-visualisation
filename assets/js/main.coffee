@@ -1,16 +1,6 @@
-
-defaultViewBoxDimensions =
-    [
-        1600,
-        900
-    ]
-
-
 class FrontexVisualisation
-    constructor: (@rawdata, @selector) ->
-        @crossings = new CrossingsBarChart(@selector, defaultViewBoxDimensions)
-        @refusals = new RefusalsTree(@selector, defaultViewBoxDimensions)
-        @map = new FrontexMap @selector, defaultViewBoxDimensions
+    constructor: ->
+        @map = new FrontexMap()
         @map.applyFocus 'euFar'
         @visualizationsWrap = $(@selector)
         $(window).scroll (e) =>
@@ -44,4 +34,4 @@ class FrontexVisualisation
 
 
 
-new FrontexVisualisation window.data, '#Visualizations'
+new FrontexVisualisation()
