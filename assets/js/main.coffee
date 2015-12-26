@@ -2,6 +2,9 @@ class FrontexVisualisation
     constructor: ->
         @map = new FrontexMap()
         @map.applyFocus 'euFar'
+        graphics =
+            map: @map
+            crossings: new StreamGraph '#Crossings', window.data.crossings
         @visualizationsWrap = $(@selector)
         $(window).scroll (e) =>
             # append class to #viz container
