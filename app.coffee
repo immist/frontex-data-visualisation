@@ -9,10 +9,8 @@ module.exports =
 
   extensions: [
     js_pipeline(files: [
-        'bower_components/**/jquery.min.js',
-        'bower_components/topojson/topojson.js',
-        'bower_components/d3/d3.js',
-        'bower_components/**/datamaps.all.min.js',
+        'node_modules/topojson/topojson.js',
+        'node_modules/datamaps/dist/datamaps.all.js',
 
         'assets/js/prepare.coffee'
         'assets/js/statistics/*.js'
@@ -21,6 +19,8 @@ module.exports =
         'assets/js/graphs/*.coffee'
 
         'assets/js/main.coffee'
+        'node_modules/d3/d3.js',
+        'node_modules/angular/angular.js'
         ]
         ),
     css_pipeline(files: 'assets/css/*.styl')
