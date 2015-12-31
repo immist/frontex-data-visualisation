@@ -37,4 +37,31 @@ class FrontexVisualisation
 
 
 
-new FrontexVisualisation()
+# new FrontexVisualisation()
+
+app = new angular.module 'FrontexVisualisationApp', []
+
+app.controller 'ViewController',
+    class ViewController
+        constructor: ($scope, $window) ->
+            $scope.currentSection = 'start'
+            angular.element($window).bind 'scroll', ->
+                $scope.currentSection = this.pageYOffset
+                $scope.$apply()
+
+app.directive 'map', ($window) ->
+    directiveObject =
+        controller: 'ViewController'
+        restrict: 'E'
+        scope:
+            currentSection: '&'
+        link: (scope, el, attrs) ->
+            el[0].style.width = '800px'
+            el[0].style.height = '600px'
+            el[0].style.display = 'block'
+            euMap = new FrontexMap el[0]
+            scope.$watch 'currentSection', (newValue, oldValue) ->
+                euMap.applyFocus 'euClose'
+
+
+    return directiveObject
