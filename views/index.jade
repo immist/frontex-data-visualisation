@@ -1,48 +1,16 @@
 extends layout
 
 block content
-    #FrontexMap
-
-    section.Section#Intro
-        .IntroHeadline Frontex Risk Analysis Network Q2 2015
-        .BigNumber#TotalImmigrantsCounter 123456789
-        .SmallText Immigrants in EU total in 2015
-
-
-    section.Section#Routes
-        .Caption 
-            .Caption-title Routes
-            .Caption-text Detections of illegal border- crossing at the EU’s external borders, Q2 2015
-
-    section.Section#Refusals
-        .Caption 
-            .Caption-title Refusals per border type, Q2 2015
-            .Caption-text In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. 
-        .Visualization
-            svg.Visualisation-graphic
-            .Visualization-controls
-                button.Visualization-controlButton Total
-                button.Visualization-controlButton Land
-                button.Visualization-controlButton Sea
-                button.Visualization-controlButton Air
-
-    section.Section#Crossings
-        .Caption 
-            .Caption-title Nationalities of illegal border crossers
-            .Caption-text Main nationalities of illegal border-crossers, April–June 2015
-        .Visualization
-            svg.Visualisation-graphic
-            .Visualization-controls
-                button.Visualization-controlButton.is-Selected Total
-                button.Visualization-controlButton Land
-                button.Visualization-controlButton Sea
-
-    section.Section#Stayers
-        .Caption 
-            .Caption-title Illegal stayers
-            .Caption-text 
-        .Visualization
-            svg.Visualisation-graphic
-            .Visualization-controls
-                button.Visualization-controlButton By nationalities
-                button.Visualization-controlButton By place of detection
+    .Visualisations
+        map
+    
+    #Intro
+        h1 Intro
+    .Section#Crossings
+        .Section-story
+            h2 Crossings
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        stream-graph(data-graph='crossings').Section-visualisation
+    #Outro
+        h2 Outro
+        p A project by Jan Wirth, Immanuel Sterzik and Lisa Vogt of DHBW Mosbach

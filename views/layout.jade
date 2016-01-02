@@ -12,6 +12,8 @@ html
     != css()
 
   body
-    block content
+    #FrontexVisualisation(ng-app='FrontexVisualisationApp')
+        .Views(ng-controller='ViewController')
+            block content
 
     != js()
