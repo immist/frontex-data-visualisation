@@ -14,8 +14,8 @@ window.data.returnDecisions.total =
     "Others":      [33201, 30375, 30117, 27051, 32091, 30559]
 }
 
-window.data.effectiveRetuns = {}
-window.data.effectiveRetuns.total =
+window.data.effectiveReturns = {}
+window.data.effectiveReturns.total =
 {
     "Albania":            [4514  ,6225  ,6639  ,9064  ,5733  ,7342 ],
     "Kosovo":             [1147  ,1129  ,1126  ,1342  ,1782  ,3396 ],
