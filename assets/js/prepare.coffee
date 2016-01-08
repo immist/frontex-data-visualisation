@@ -56,6 +56,7 @@ class @GraphDirective
 
         # select with d3 and create wrapping elements
         el = d3.select el
+
         graph = el
             .append 'svg'
             .attr 'width', @width + @margin.left + @margin.right
@@ -64,6 +65,7 @@ class @GraphDirective
             .attr 'width', @width
             .attr 'height', @height
             .attr("transform", "translate(" + @margin.left + "," + @margin.top + ")")
+
 
         graph
 

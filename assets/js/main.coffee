@@ -53,4 +53,4 @@ app.controller 'ViewController',
 
 
 app.directive 'streamGraph', ['$compile', ($compile) ->
-    new StreamGraph('stream', $compile)]
+    new StreamGraph($compile)]

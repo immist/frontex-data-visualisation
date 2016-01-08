@@ -1,51 +1,40 @@
-crossingsBumps = [ # layers, samples inside
-]
-
-transformDataToLayers = (rawData) ->
-    layers = []
-    for country, data of rawData
-        # create each layer
-        layerData = []
-        if country != 'Total All Borders'
-            for dataPoint, i in data
-                # trim last values
-                if i < 6
-                    layerData.push
-                        x: i
-                        y: toNumber dataPoint
-            layerData.country = country
-            layers.push layerData
-    return layers
 
 
 
 
 class @StreamGraph extends GraphDirective
-    constructor: (el, data, @$compile) ->
-    link: (scope, el, attrs) =>
-        el = el[0] # select proper element
-        @styleWrapper el # add dimensions
-        data = window.data[el.dataset.graph]
-        @views =
-            default: [0,0,1,1]
-        @el = d3.select el
+    constructor: (@$compile) ->
+    controller: ($scope) ->
+        $scope.selectCountry = (country) ->
+            $scope.update $scope.data.get 'layers', $scope.subset, country
 
-        svg = @appendSvg @el
+    scope: {
+            focusedCountry: '='
+        }
 
-        graph = svg.append 'g'
+    link: ($scope, el, attrs) =>
+        $scope.data = new Dataset window.data[el[0].dataset.graph]
+        $scope.subset = 'total'
+        $scope.country = ''
+
+        vis = @createVisualisation el
+
+        graph = vis.append 'g'
             .attr 'class', 'Graph'
 
-        @data = transformDataToLayers data
+        vis.append 'g'
+            .attr 'class', 'axisX'
+        vis.append 'g'
+            .attr 'class', 'axisY'
 
-        update = (source) =>
+        $scope.update = (source) =>
             stack = d3.layout.stack().offset 'zero'
             layers = stack source
-            console.log layers
 
 
             x = d3.scale.linear()
                 .domain [0, layers[0].length - 1]
-                .range [@width , @width ]
+                .range [0, @width ]
 
             maxOfLayer = (layer) ->
                     d3.max layer, (layerPoint) ->
@@ -64,11 +53,9 @@ class @StreamGraph extends GraphDirective
             totalMaxMean = d3.max(layers, meanOfLayer)
             totalMinMean = d3.min(layers, meanOfLayer)
 
-            sortedLayers = d3.sorty
-
             y = d3.scale.linear()
-                .domain [totalMax, 0]
-                .range [@height, @height]
+                .domain [totalMax * 1.3, 0]
+                .range [0, @height]
 
             colorScale = d3.scale.linear()
                 .range ['#000', '#FFF']
@@ -78,38 +65,67 @@ class @StreamGraph extends GraphDirective
                 .y0 (d) -> y d.y0 
                 .y1 (d) -> y(d.y0 + d.y)
 
-            tooltip = svg.append 'div'
-                .text 'tooltip'
-
             streams = graph.selectAll 'path'
                 .data layers
-                .enter().append 'path'
+            streams
+                .transition()
                 .attr 'd', area
+                .attr 'ng-click', 'selectCountry("")'
+                .call (els) =>
+                    for el in els[0]
+                        @$compile(el)($scope)
+
+
+            streams.exit()
+                .transition()
+                .remove()
+
+
+            streams.enter().append 'path'
+                .attr 'd', area
+                .attr 'class', 'streamLayer'
+                .attr 'ng-click', (d) -> 'selectCountry("' + d.country + '")'
+                .on 'mouseover', (d) ->
+                    vis.append 'text'
+                        .attr 'class', 'tooltip'
+                        .text d.country
+                .on 'mouseout', (d) ->
+                    vis.selectAll '.tooltip'
+                        .remove()
+
                 .style 'stroke', 'transparent'
-                .style 'opacity', -> Math.random()
-                .call => $compile(this[0].parentnode)(scope)
-                #.style 'fill', -> colorScale Math.random()
+                .style 'opacity', -> 0.5 + Math.random() * 0.5
+                .call (els) =>
+                    for el in els[0]
+                        @$compile(el)($scope)
 
 
 
 
             labels = window.data.header
-            axisX = d3.svg.axis()
-                .scale x
-                .ticks layers[0].length
-                .tickFormat (d) -> labels[d]
+            axisX = ->
+                d3.svg.axis()
+                    .scale x
+                    .ticks layers[0].length
+                    .tickFormat (d) -> labels[d]
 
-            axisY = d3.svg.axis()
-                .scale y
-                .ticks 10
-                .tickFormat d3.format 's'
-                .orient 'left'
+            axisY = ->
+                d3.svg.axis()
+                    .scale y
+                    .orient 'left'
+                    .ticks 8
+                    .tickFormat d3.format 's'
 
 
-            svg.append 'g'
-                .attr 'transform', 'translate(0,' + (defaultHeight * 0.9) + ')'
-                .call axisX
-            svg.append 'g'
-                .call axisY
-                .attr 'transform', 'translate(' + (defaultWidth * 0.1) + ', 0)'
-        update @data
+            vis.select '.axisX'
+                .attr 'transform', 'translate(0,' + @height+ ')'
+                .call(axisX()
+                    .tickSize(-@width, 0, 0))
+
+
+            vis.select '.axisY'
+                .call(axisY()
+                    .tickSize(-@width, 0, 0))
+        $scope.update $scope.data.get 'layers', $scope.subset, $scope.country
+
+        #updateGraph(scope.subset, scope.country)

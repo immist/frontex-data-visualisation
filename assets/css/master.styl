@@ -1,31 +1,33 @@
 
-offDark = #167A8B
+dark = #363863
 intenseDark = #111
-light = #2DEA8F
-offLight = #24B273
-dark = #243D44
-dark = #243D44
-highlight = #C44F74
+offDark = #635270
+light = #F8E796
+highlight = #FF3757
 
 @import '_settings'
 @import '_typographic'
 
 reset-css()
 typographic()
+border-box-html()
 
 // base
 body
     margin 0
     letter-spacing vr-block(0.03)
-    background dark
+    background light
 
 // map styles
 
 
+h2
+    text-transform uppercase
+    letter-spacing vr-block(0.07)
 svg
     *
-        fill light
-        color light
+        fill dark
+        color dark
 map
 stream-graph
     margin 0 auto
@@ -53,15 +55,79 @@ stream-graph
     perspective 1000
     transform translateZ(0)
 
+.streamLayer
+    cursor pointer
+    transition 0.2s
+    &:hover
+        fill highlight
+        opacity 1 !important
 
 // prototyping
 #Intro
+    text-align center
+    min-height 100vh
+    padding-top 20vh
+    background-size cover
 #Outro
-    display none
-
+    background intenseDark
+    padding vr-block(4)
 .Section
+    // display flex
+    flex-wrap wrap
+    background light
+    align-items center
+    justify-content space-between
+    overflow hidden
+    min-height 100vh
+    border-bottom 1px solid dark
+
     &-story
-        padding vr-block(3)
-        width vr-block(10)
+        max-width vr-block(17)
+        padding vr-block(2)
+        width 100%
+        height 100%
+        p
+            display none
     &-visualisation
-        border 1px solid red
+        display block
+        text
+            font-size 16px
+
+
+
+
+.axisY
+    .tick
+        line
+            stroke dark
+            transition 0.1s
+            stroke-dasharray 1px 5px
+        text
+            transform translateX(-30px)
+            font-family monospace
+.axisX
+    .tick
+        line
+            stroke light
+            transition 0.1s
+            stroke-width 1px
+            stroke-dasharray 1px 5px
+        text
+            transform translateY(30px)
+            font-family monospace
+.tick
+    &:hover
+        line
+            stroke highlight
+            stroke-dasharray 5, 10
+            stroke-width 2
+        text
+            color highlight !important
+    line
+        transition 0.1s
+    text
+        color dark
+        transition 0.1s
+
+.graphButtons
+    display flex
