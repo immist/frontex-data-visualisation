@@ -20,18 +20,18 @@ window.data.crossings = {}
     x: 1
     y: 1
 
-@getViewBox = (view) =>
+@getViewBox = (view, width, height) =>
     # params: original dimensions, scale
     viewBox = ''
     for val, i in view
         if i == 0
-            viewBox += val * defaultWidth + ' '
+            viewBox += val * width + ' '
         if i == 1
-            viewBox += val * defaultHeight + ' '
+            viewBox += val * height + ' '
         if i == 2
-            viewBox += val / scale.x * defaultWidth  + ' ' # width = correct
+            viewBox += val / scale.x * width  + ' ' # width = correct
         if i == 3
-            viewBox += val / scale.y * defaultHeight + ' ' # height = correct
+            viewBox += val / scale.y * height + ' ' # height = correct
 
     return viewBox
 
@@ -110,6 +110,25 @@ class @Dataset
                             total[country][index] = total[country][index] + value
              @dataset.total = total
 
+    countryMap:
+        "Albania":            'ALB'
+        "Brazil":             'BRA'
+        "Algeria":            'ALG'
+        "USA":                'USA'
+        "Ukraine":            'UKR'
+        "China":              'CHN'
+        "Russian Federation": 'RUS'
+        "Honduras":           'HND'
+        "Nigeria":            'NGA'
+        # "Others":             [6434 ,6648 ,6948 ,7006 ,7208 ,6587]
+        # "Not specified":      '
+
+
+    getCountries: =>
+        countries = []
+        for country of @dataset.total
+            countries.push @countryMap[country]
+        countries
     getSubsetIdentifiers: ->
         subsets = []
         for subset of @dataset
@@ -125,7 +144,5 @@ class @Dataset
             countryData = dataset[country]
             dataset = {}
             dataset[country] = countryData
-            console.log 'dataset',  dataset
-        console.log 'dataset',  dataset
         dataset = @transformations[transform] dataset
         dataset

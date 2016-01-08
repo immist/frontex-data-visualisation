@@ -15,7 +15,7 @@ module.exports =
 
             'assets/js/libs/d3.js',
             'assets/js/libs/angular.js'
-            'assets/js/libs/angular-scroll-animate.js'
+            'assets/js/libs/ngParallax.js'
 
             'assets/js/libs/topojson.js',
             'assets/js/libs/datamaps.all.js',

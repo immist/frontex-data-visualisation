@@ -1,39 +1,43 @@
 extends layout
 
 block content
-    .Visualisations
-        map
-    
     #Intro
-        h2 Frontex Risk Analysis Network
-        p An immigration report visualised by students of the DHBW Mosbach
+        h1 Frontex Risk Analysis Network
+        p FRAN Quarterly reports are prepared by the Frontex Risk Analysis Unit and provide a regular overview of irregular migration at the EU external borders, based on the irregular migration data exchanged among Member State border-control authorities within the cooperative framework of the Frontex Risk Analysis Network (FRAN) and its subsidiary, the European Union Document-Fraud Risk Analysis Network (EDF-RAN). 
+            | This site was created by students of the DHBW Mosbach who visualised the FRAN Quarterly report of the Quarter 2 (April - June) of 2015.
+
 
     .Section#Crossings
-        .Section-story
+        .Section-story(ng-parallax pattern='"img/syrian-refugees.jpg"' speed='3')
             h2 Crossings
             p This diagram shows how many border crossings occured at individual Border Crossing Points (BCP). "Border crossing point" means any crossing point authorized by the competent authorities for the crossing of external borders (Article 2 sec. 8 of the Schengen Borders Code). Detections reported by border type and nationality at the external borders. 
-        stream-graph(data-graph='crossings').Section-visualisation
+        .Section-visualisation
+            map.Crossings-map
+            stream-graph(data-graph='crossings')
 
     .Section#Refusals
-        .Section-story
+        .Section-story(ng-parallax pattern='"img/refugee-camp.jpg"' speed='3')
             h2 Refusals
             p In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. A substantial increase of around 60% in relation to Q2 2014 was observed for refusals issued to Ukrainian nationals, 80% of whom were refused at the Polish border.
-        stream-graph(data-graph='refusals').Section-visualisation
+        .Section-visualisation
+            refusalsmap.Refusals-map
+            stream-graph(data-graph='refusals').Refusals-graph
 
     .Section#Stays
-        .Section-story
+        .Section-story(ng-parallax pattern='"img/yazidi-refugees.jpg"' speed='3')
             h2 Illegal stayers
             p In Q2 2015, most detections of illegal stay were related to persons leaving the EU through German airports. Compared to the same period in 2014, the reported number increased by more than one-third. The increase was to a very large extent caused by Kosovo* citizens trying to leave through German airports with- out a residence permit or a valid visa.
-        stream-graph(data-graph='stays').Section-visualisation
+        .Section-visualisation
+            stayersmap.Refusals-map
 
     .Section#ReturnDecisions
-        .Section-story
+        .Section-story(ng-parallax pattern='"img/refugee-camp.jpg"' speed='3')
             h2 Return decisions issued
             p Foreigner return decisions are issued if residence conditions in respective EU countries are violated. The visualised numbers are return decisions issued by top ten target nationalities.
         stream-graph(data-graph='returnDecisions').Section-visualisation
 
     .Section#EffectiveReturns
-        .Section-story
+        .Section-story(ng-parallax pattern='"img/syrian-refugees.jpg"' speed='3')
             h2 Effective Returns
             p Return is often grouped into one of two types: either voluntary or forced (see for example UKBA 2012). ‘Voluntary’ refers to any situation where the migrant returns under their free will; ‘forced’ refers to returns where the migrant is forcibly removed from the host country. The displayed data represents the number of people effectively returned to third countries by top ten target nationalities.
         stream-graph(data-graph='effectiveReturns').Section-visualisation

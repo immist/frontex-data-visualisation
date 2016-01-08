@@ -6,7 +6,7 @@ class @StreamGraph extends GraphDirective
     constructor: (@$compile) ->
     controller: ($scope) ->
         $scope.selectCountry = (country) ->
-            $scope.update $scope.data.get 'layers', $scope.subset, country
+            # $scope.update $scope.data.get 'layers', $scope.subset, country
 
     scope: {
             focusedCountry: '='
