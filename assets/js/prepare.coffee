@@ -120,6 +120,14 @@ class @Dataset
         "Russian Federation": 'RUS'
         "Honduras":           'HND'
         "Nigeria":            'NGA'
+        "Syria":              'SYR'
+        "Afghanistan":        'AFG'
+        "Eritrea":            'ERI'
+        "Iraq":               'IRQ'
+        "Morocco":            'MAR'
+        "Pakistan":           'PAK'
+        "Somalia":            'SOM'
+        "Algeria":            'DZA'
         # "Others":             [6434 ,6648 ,6948 ,7006 ,7208 ,6587]
         # "Not specified":      '
 

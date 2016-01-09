@@ -143,7 +143,6 @@ class RefusalsMap
         for country in countries
             mapData[country] =
                 fillKey: 'peopleCameFromHere'
-        console.log mapData
         $scope.map = new Datamap
             element: el[0]
             setProjection: (element, options) ->
@@ -179,6 +178,8 @@ class StayersMap
 
     link: ($scope, el, attrs) =>
         colors = d3.scale.category10()
+
+
         $scope.map = new Datamap
             element: el[0]
             projection: d3.geo.stereographic()
@@ -191,14 +192,31 @@ class StayersMap
             fills: 
                 defaultFill: null
                 peopleCameFromHere: "#FF3757"
-            data:
-                DEU: { fillKey: "peopleCameFromHere" }
-                RUS: colors(Math.random() * 100)
+
         svg = d3.select(el[0])
         $scope.svg = svg.select 'svg'
-        width = $scope.svg[0][0].clientWidth
-        height = $scope.svg[0][0].clientHeight
+
+        data = new Dataset window.data.stays
+        countries = data.getCountries()
+        path = d3.geo.path()
+        for country in countries
+            console.log country
+            countryFeature = $scope.svg.select '.' + country
+            if countryFeature?
+                console.log path.centroid countryFeature
+
         $scope.svg.attr 'viewBox', '469 134 87 89'
+        $scope.map.bubbles [
+                name: 'Castle Bravo',
+                radius: 25,
+                yeild: 15000,
+                country: 'USA',
+                significance: 'First dry fusion fuel "staged" thermonuclear weapon; a serious nuclear fallout accident occurred',
+                fillKey: 'USA',
+                date: '1954-03-01',
+                latitude: 11.415,
+                longitude: 165.1619
+            ]
 
 app.directive 'stayersmap', ($compile) ->
     return new StayersMap()
