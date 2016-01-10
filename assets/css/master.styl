@@ -23,7 +23,6 @@ body
     width 1920px
     margin 0
     letter-spacing vr-block(0.03)
-    background light
 
 #FrontexVisualisation
     width 1920px
@@ -37,8 +36,8 @@ h2
     letter-spacing vr-block(0.07)
 svg
     *
-        fill dark
-        color dark
+        fill base02
+        color base02
 .Map
     &-wrap
         fixed top 0 left 0
@@ -65,7 +64,7 @@ svg
     cursor pointer
     transition 0.2s
     &:hover
-        fill highlight
+        fill violet
         opacity 1 !important
 
 // prototyping
@@ -85,7 +84,7 @@ svg
     shadeBackground()
 
 #Outro
-    background intenseDark
+    background base03
     padding vr-block(4)
 
 @keyframes fadeIn
@@ -96,14 +95,14 @@ svg
 .Section
     // display flex
     flex-wrap wrap
-    background light
+    background base2
     align-items center
     justify-content space-between
     min-height 100vh
-    border-bottom 1px solid dark
+    border-bottom 1px solid base02
 
     &-story
-        background light
+        background base2
         padding vr-block(7) vr-block(15) 
         width 100%
         background-size cover !important
@@ -121,7 +120,7 @@ svg
 .axisY
     .tick
         line
-            stroke dark
+            stroke base02
             transition 0.1s
             stroke-dasharray 1px 5px
         text
@@ -130,7 +129,7 @@ svg
 .axisX
     .tick
         line
-            stroke light
+            stroke base2
             transition 0.1s
             stroke-width 1px
             stroke-dasharray 1px 5px
@@ -140,17 +139,43 @@ svg
 .tick
     &:hover
         line
-            stroke highlight
+            stroke violet
             stroke-dasharray 5, 10
             stroke-width 2
         text
-            color highlight !important
+            color violet !important
     line
         transition 0.1s
     text
-        color dark
+        color base02
         transition 0.1s
 
 .Section-visualisation
     display flex
     justify-content space-between
+
+.Crossings
+    &-map
+        width 800px
+        height 900px
+.Refusals
+    &-map
+        width 1300px
+        height 900px
+    &-graph
+        width 200px
+        background base2
+        transform scale(0.7) translateX(-800px) translateY(-100px)
+#Refusals
+    .Section-story
+        &:before
+            background-color transparentify(base2, base2, 0.6) !important
+        color base02
+        h2 
+            fixed top 0 left 200px
+            background base02
+            color base2
+            font-size 50px
+
+#Crossings
+    background black

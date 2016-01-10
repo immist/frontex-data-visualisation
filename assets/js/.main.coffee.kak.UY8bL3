@@ -152,7 +152,7 @@ class RefusalsMap
                 return {path: path, projection: projection}
             fills: 
                 defaultFill: null
-                'peopleCameFromHere': "#FF00FF"
+                'peopleCameFromHere': "#FF3757"
             data: mapData
         svg = d3.select(el[0])
         $scope.svg = svg.select 'svg'
@@ -191,7 +191,7 @@ class StayersMap
 
             fills: 
                 defaultFill: null
-                peopleCameFromHere: "#FF00FF"
+                peopleCameFromHere: "#FF3757"
 
         svg = d3.select(el[0])
         $scope.svg = svg.select 'svg'
@@ -206,17 +206,6 @@ class StayersMap
                 console.log path.centroid countryFeature
 
         $scope.svg.attr 'viewBox', '469 134 87 89'
-        $scope.map.bubbles [
-                name: 'Castle Bravo',
-                radius: 25,
-                yeild: 15000,
-                country: 'USA',
-                significance: 'First dry fusion fuel "staged" thermonuclear weapon; a serious nuclear fallout accident occurred',
-                fillKey: 'USA',
-                date: '1954-03-01',
-                latitude: 11.415,
-                longitude: 165.1619
-            ]
 
 app.directive 'stayersmap', ($compile) ->
     return new StayersMap()
