@@ -5,12 +5,18 @@ reset-css()
 typographic()
 border-box-html()
 
+grid-overlay()
+
+
+
+
+// MIXINS
+
 shadeBackground()
     *
         relative()
         z-index 100
     &:before
-        background transparentify(black, black, 0.7)
         absolute top 0 left 0
         size 100%
 
@@ -18,8 +24,13 @@ shadeBackground()
         content ''
         display block
 
-// base
+
+
+
+
+// BASE
 body
+    border-right 1px solid black
     width 1920px
     margin 0
     letter-spacing vr-block(0.03)
@@ -28,108 +39,38 @@ body
     width 1920px
     margin 0 auto
 
-// map styles
-
-
 h2
     text-transform uppercase
     letter-spacing vr-block(0.07)
-svg
-    *
-        fill base02
-        color base02
-.Map
-    &-wrap
-        fixed top 0 left 0
-        z-index 100
-        height 100vh
+
+
+
+
+
+// MAP STYLES
 
 .datamaps-subunit
     stroke-width 0.3 !important
-    stroke offDark !important
-
-.datamaps
-    &-arc
-        stroke-width 0.3 !important
-        stroke linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%) !important
-
-
-#map
-    transition 1s
-    backface-visibility hidden
-    perspective 1000
-    transform translateZ(0)
-
-.streamLayer
-    cursor pointer
-    transition 0.2s
-    &:hover
-        fill violet
-        opacity 1 !important
-
-// prototyping
-#Intro
-    background url('../img/refugee-boat.jpg')
-    min-height 100vh
-    padding 20vh 500px
-    background-size cover
-    color white
-    relative()
-    h1
-        font-size 70px
-    *
-        relative()
-        z-index 100
-        padding-bottom 50px
-    shadeBackground()
-
-#Outro
-    background base03
-    padding vr-block(4)
-
-@keyframes fadeIn
-    0%
-        opacity 0
-    100%
-        opacity 1
-.Section
-    // display flex
-    flex-wrap wrap
-    background base2
-    align-items center
-    justify-content space-between
-    min-height 100vh
-    border-bottom 1px solid base02
-
-    &-story
-        background base2
-        padding vr-block(7) vr-block(15) 
-        width 100%
-        background-size cover !important
-        color white
-        shadeBackground()
-    &-visualisation
-        display block
-        overflow hidden
-        text
-            font-size 16px
 
 
 
+
+
+
+
+// STREAM GRAPH
 
 .axisY
     .tick
         line
-            stroke base02
             transition 0.1s
             stroke-dasharray 1px 5px
         text
             transform translateX(-30px)
-            font-family monospace
+            font-family 'Input Sans Condensed'
 .axisX
     .tick
         line
-            stroke base2
             transition 0.1s
             stroke-width 1px
             stroke-dasharray 1px 5px
@@ -139,43 +80,66 @@ svg
 .tick
     &:hover
         line
-            stroke violet
             stroke-dasharray 5, 10
             stroke-width 2
         text
-            color violet !important
     line
         transition 0.1s
     text
-        color base02
         transition 0.1s
 
 .Section-visualisation
     display flex
     justify-content space-between
 
+
+
+
+
+// SECTIONS
+
+.Section
+    flex-wrap wrap
+    align-items center
+    justify-content space-between
+
+    &-story
+        width 100%
+        background-size cover !important
+        shadeBackground()
+    &-visualisation
+        display block
+        overflow hidden
+
+#Intro
+.Section
+    overflow auto
+    border-bottom 1px solid base02
+    padding vr-block(5) vr-block(5)
+
+#Intro
+    background-size cover
+    relative()
+    *
+        relative()
+        z-index 100
+    shadeBackground()
+
+
+
+
+
+// SECTION LAYOUTS
+
 .Crossings
     &-map
         width 800px
         height 900px
+
 .Refusals
     &-map
         width 1300px
         height 900px
     &-graph
         width 200px
-        background base2
         transform scale(0.7) translateX(-800px) translateY(-100px)
-#Refusals
-    .Section-story
-        &:before
-            background-color transparentify(base2, base2, 0.6) !important
-        color base02
-        h2 
-            fixed top 0 left 200px
-            background base02
-            color base2
-            font-size 50px
-
-#Crossings
-    background black

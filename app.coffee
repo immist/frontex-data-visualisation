@@ -20,9 +20,8 @@ module.exports =
             'assets/js/libs/topojson.js',
             'assets/js/libs/datamaps.all.js',
 
-
-            'assets/js/map/*.coffee'
-            'assets/js/graphs/*.coffee'
+            'assets/js/directives/*.coffee'
+            'assets/js/VisController.coffee'
 
             'assets/js/main.coffee'
         ]

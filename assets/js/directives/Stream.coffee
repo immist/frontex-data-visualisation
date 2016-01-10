@@ -2,7 +2,7 @@
 
 
 
-class @StreamGraph extends GraphDirective
+class @StreamGraph
     constructor: (@$compile) ->
     controller: ($scope) ->
         $scope.selectCountry = (country) ->
