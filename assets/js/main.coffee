@@ -4,8 +4,8 @@ app
     .directive 'section', ->
         new SectionDirective()
 
-    .directive 'stream-vis', ['$compile', ($compile) ->
-        new StreamGraph($compile)]
+    .directive 'streamVis', ['$compile', ($compile) ->
+        new StreamGraphDirective($compile)]
 
-    .directive 'map-vis', ->
+    .directive 'mapVis', ->
         new DatamapDirective()

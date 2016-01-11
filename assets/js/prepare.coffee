@@ -60,21 +60,29 @@ class @Dataset
             subsets.push subset
         subsets
 
-    get: (transform, subSet, country) ->
-        if subSet?
-            dataset = @dataset[subSet]
+    get: (opts) ->
+
+        # select subset
+        if opts.subset?
+            dataset = JSON.parse JSON.stringify @dataset[opts.subset]
         else
-            dataset = @dataset.total
-        if dataset[country]?
-            countryData = dataset[country]
-            dataset = {}
-            dataset[country] = countryData
-        dataset = @transformations[transform] dataset
-        dataset
+            dataset = JSON.parse JSON.stringify @dataset.total
 
+        # reduce all except selected countries to zero
+        if dataset[opts.selected]?
+            for country, data of dataset
+                if country != opts.selected
+                    for value, i in data
+                        dataset[country][i] = 0
 
+        # mark highlighted country
+        if dataset[opts.selected]?
+            dataset[opts.selected].hinted = true
 
+        # transform set to desired format
+        dataset = @transformations[opts.format] dataset
 
+        return dataset
 
 
 
@@ -112,5 +120,6 @@ class @Dataset
                             y: dataPoint
                     layerData.country = country
                     layers.push layerData
+
             return layers
 
