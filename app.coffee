@@ -21,7 +21,6 @@ module.exports =
             'assets/js/libs/datamaps.all.js',
 
             'assets/js/directives/*.coffee'
-            'assets/js/VisController.coffee'
 
             'assets/js/main.coffee'
         ]
