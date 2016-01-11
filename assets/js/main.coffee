@@ -1,7 +1,11 @@
-app = new angular.module 'frontexVisualisationApp', []
+@app = new angular.module 'frontexVisualisationApp', []
 
-app.directive 'stream-vis', ['$compile', ($compile) ->
-    new StreamGraph($compile)]
+app
+    .directive 'section', ->
+        new SectionDirective()
 
-app.directive 'map-vis', ($compile) ->
-    new DatamapDirective()
+    .directive 'stream-vis', ['$compile', ($compile) ->
+        new StreamGraph($compile)]
+
+    .directive 'map-vis', ->
+        new DatamapDirective()

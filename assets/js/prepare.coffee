@@ -30,12 +30,13 @@ colors =
 
 class @Dataset
 
-    constructor: (@dataset) ->
+    constructor: (datasetId) ->
         # process all subsets
         ## transform all data to numbers
         ## calculate total if it does not exist yet
         ## provide functions for getting subsets and data in a specific format
         # for all types e.g. land,  air, sea
+        @dataset = window.data[datasetId]
         if !@dataset.total?
             total = {}
             for type, set of @dataset
@@ -108,7 +109,7 @@ class @Dataset
                     for dataPoint, i in data
                         layerData.push
                             x: i
-                            y: toNumber dataPoint
+                            y: dataPoint
                     layerData.country = country
                     layers.push layerData
             return layers
