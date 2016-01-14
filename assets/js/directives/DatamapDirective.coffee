@@ -36,7 +36,6 @@ class @DatamapDirective
                 countryEl = svg.select '.' + country
                 countryEl.style 'fill', scope.getMainColor 3
                 countryEl.attr 'ng-click', 'selectCountry("' + country + '")'
-                @$compile(countryEl[0])(scope) if countryEl[0][0]?
                 countryEl.attr 'ng-mouseenter', 'hintCountry("' + country + '")'
                 countryEl.attr 'ng-mouseleave', 'unhintCountry()'
                 @$compile(countryEl[0])(scope) if countryEl[0][0]?
