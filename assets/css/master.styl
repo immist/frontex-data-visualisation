@@ -50,12 +50,23 @@ h2
 // MAP STYLES
 
 .datamaps-subunit
-    stroke-width 0.3 !important
+    stroke-width 0.2 !important
 
 
 map-vis
     display block
     size vr-block(13)
+    relative()
+
+.datamaps-hoverover .hoverinfo
+    border none
+    box-shadow none
+    t-html()
+    font-family 'Input Mono'
+    border-radius none
+    strong
+        font-weight 300
+
 
 
 
@@ -77,7 +88,7 @@ stream-vis
         transition 0.2s
         cursor pointer
         &:hover
-            fill red
+            opacity 1 !important
         fill black
     display block
     size vr-block(13)
@@ -138,3 +149,44 @@ stream-vis
     border-bottom 1px solid base02
     padding vr-block(5) vr-block(5)
 
+
+// Color Schemes
+.Section.dark
+    background base02
+    color base2
+
+    text
+    .stream-layer
+        fill base3
+    .datamaps-hoverover .hoverinfo
+        background base03
+        color base3
+
+.Section.light
+    background base2
+    color base02
+
+    text
+    .stream-layer
+        fill base03
+    .datamaps-hoverover .hoverinfo
+        background base3
+        color base03
+
+
+
+
+.Section.red
+    .stream-layer
+        &:hover
+            fill red
+
+.Section.blue
+    .stream-layer
+        &:hover
+            fill blue
+
+.Section.green
+    .stream-layer
+        &:hover
+            fill green
