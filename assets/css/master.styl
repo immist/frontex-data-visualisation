@@ -53,12 +53,36 @@ h2
     stroke-width 0.3 !important
 
 
+map-vis
+    display block
+    size vr-block(13)
 
 
 
 
 
 // STREAM GRAPH
+
+stream-vis
+    margin 0 0 vr-block(3) vr-block(3)
+    overflow visible
+    display block
+    .&-svg
+        overflow visible
+        size 100%
+        display block
+    text
+        fill black
+    .stream-layer
+        transition 0.2s
+        cursor pointer
+        &:hover
+            fill red
+        fill black
+    display block
+    size vr-block(13)
+    svg
+        display block
 
 .axisY
     .tick
@@ -88,9 +112,6 @@ h2
     text
         transition 0.1s
 
-.Section-visualisation
-    display flex
-    justify-content space-between
 
 
 
@@ -108,8 +129,8 @@ h2
         background-size cover !important
         shadeBackground()
     &-visualisation
-        display block
-        overflow hidden
+        display flex
+        justify-content space-between
 
 #Intro
 .Section
@@ -117,29 +138,3 @@ h2
     border-bottom 1px solid base02
     padding vr-block(5) vr-block(5)
 
-#Intro
-    background-size cover
-    relative()
-    *
-        relative()
-        z-index 100
-    shadeBackground()
-
-
-
-
-
-// SECTION LAYOUTS
-
-.Crossings
-    &-map
-        width 800px
-        height 900px
-
-.Refusals
-    &-map
-        width 1300px
-        height 900px
-    &-graph
-        width 200px
-        transform scale(0.7) translateX(-800px) translateY(-100px)
