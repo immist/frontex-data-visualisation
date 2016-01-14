@@ -65,6 +65,12 @@ class @StreamGraphDirective
             streams = graph.selectAll 'path'
                 .data layers
             streams
+                .attr 'class', (d) ->
+                    return 'stream-layer hinted' if d.hinted?
+                    return 'stream-layer'
+                .style 'fill', (d) ->
+                    return scope.getHighlightColor() if d.hinted? | d.selected?
+                    return undefined
                 .transition()
                 .duration @duration
                 .attr 'd', area
@@ -117,6 +123,7 @@ class @StreamGraphDirective
                 format: 'layers'
                 subset: scope.subset
                 selected: scope.selectedCountry
+                hinted: scope.hintedCountry
         scope.$watch 'selectedCountry', updateGraph, true
         scope.$watch 'hintedCountry', updateGraph, true
         scope.$watch 'subset', updateGraph, true

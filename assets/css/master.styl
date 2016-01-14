@@ -44,6 +44,20 @@ h2
     letter-spacing vr-block(0.07)
 
 
+.Section-visualisation
+    relative()
+    min-height vr-block(20)
+
+map-vis
+    display block
+    size vr-block(13)
+    relative()
+    size 100% 
+    absolute top 0 left 0
+    z-index 100
+
+stream-vis
+    z-index 200
 
 
 
@@ -52,11 +66,6 @@ h2
 .datamaps-subunit
     stroke-width 0.2 !important
 
-
-map-vis
-    display block
-    size vr-block(13)
-    relative()
 
 .datamaps-hoverover .hoverinfo
     border none
@@ -75,9 +84,11 @@ map-vis
 // STREAM GRAPH
 
 stream-vis
-    margin 0 0 vr-block(3) vr-block(3)
+    margin 0 vr-block(1) vr-block(3) auto
     overflow visible
+    size vr-block(15) vr-block(10)
     display block
+    float right
     .&-svg
         overflow visible
         size 100%
@@ -87,11 +98,10 @@ stream-vis
     .stream-layer
         transition 0.2s
         cursor pointer
-        &:hover
+        &.hinted
             opacity 1 !important
         fill black
     display block
-    size vr-block(13)
     svg
         display block
 
@@ -147,11 +157,14 @@ stream-vis
 .Section
     overflow auto
     border-bottom 1px solid base02
-    padding vr-block(5) vr-block(5)
+    &-story
+        padding vr-block(5) vr-block(5)
 
 
 // Color Schemes
 .Section.dark
+    .datamaps-subunits
+        fill base01
     background base02
     color base2
 
@@ -163,6 +176,8 @@ stream-vis
         color base3
 
 .Section.light
+    .datamaps-subunits
+        fill base1
     background base2
     color base02
 
@@ -173,20 +188,9 @@ stream-vis
         background base3
         color base03
 
-
-
-
 .Section.red
-    .stream-layer
-        &:hover
-            fill red
-
+    .datamaps-subunit.highlighted
+        fill red !important
 .Section.blue
-    .stream-layer
-        &:hover
-            fill blue
-
-.Section.green
-    .stream-layer
-        &:hover
-            fill green
+    .datamaps-subunit.highlighted
+        fill blue !important

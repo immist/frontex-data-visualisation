@@ -12,12 +12,11 @@ class @DatamapDirective
             map = new Datamap
                 fills:
                     defaultFill: scope.getBaseColor 1
-                    highlightFillColor: 'blue'
                 strokes:
                     defaultStroke: scope.getMainColor 1
                 geographyConfig:
                     highlightFillColor: scope.getHighlightColor()
-                    highlightBorderColor: scope.getMainColor 3
+                    highlightBorderColor: scope.getHighlightColor()
                     borderColor: scope.getBaseColor 2
 
                 element: el[0]
@@ -32,10 +31,21 @@ class @DatamapDirective
             viewbox = if scope.focus? then @viewboxes[scope.focus] else @viewboxes['euClose']
             svg.attr 'viewBox', viewbox
 
+            # highlight interactable countries
             for country in scope.dataset.getCountries()
                 countryEl = svg.select '.' + country
-                countryEl.style 'fill', scope.getMainColor 3
+                countryEl.style 'fill', scope.getMainColor 1
                 countryEl.attr 'ng-click', 'selectCountry("' + country + '")'
+                countryEl.classed 'interactable-country', true
                 countryEl.attr 'ng-mouseenter', 'hintCountry("' + country + '")'
                 countryEl.attr 'ng-mouseleave', 'unhintCountry()'
                 @$compile(countryEl[0])(scope) if countryEl[0][0]?
+
+            # highlight hinted countries
+            scope.$watch 'hintedCountry', (newCountry,oldCountry) =>
+                if oldCountry != ''
+                    oldCountryEl = svg.select '.' + oldCountry
+                    oldCountryEl.classed 'highlighted', false
+                if newCountry != ''
+                    newCountryEl = svg.select '.' + newCountry
+                    newCountryEl.classed 'highlighted', true

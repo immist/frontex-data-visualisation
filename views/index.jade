@@ -7,15 +7,17 @@ block content
             p FRAN Quarterly reports are prepared by the Frontex Risk Analysis Unit and provide a regular overview of irregular migration at the EU external borders, based on the irregular migration data exchanged among Member State border-control authorities within the cooperative framework of the Frontex Risk Analysis Network (FRAN) and its subsidiary, the European Union Document-Fraud Risk Analysis Network (EDF-RAN). 
                 | This site was created by students of the DHBW Mosbach who visualised the FRAN Quarterly report of the Quarter 2 (April - June) of 2015.
 
-        .Section#Crossings(section='crossings')
+        .Section#Crossings(section='crossings' ng-class='getColorClasses()' highlight-color='red' base-tones='dark' focus='euMiddleEast')
             .Section-story
                 h2 Crossings
-                p This diagram shows how many border crossings occured at individual Border Crossing Points (BCP). "Border crossing point" means any crossing point authorized by the competent authorities for the crossing of external borders (Article 2 sec. 8 of the Schengen Borders Code). Detections reported by border type and nationality at the external borders. 
+                p Detections of crossings at individual Border Crossing Points reported by nationality. "Border Crossing Point" means any crossing point authorized by the competent authorities for the crossing of external borders (Article 2 sec. 8 of the Schengen Borders Code). 
+                .selected SELECTED COUNTRY {{selectedCountry}}
+                .selected hinted COUNTRY {{hintedCountry}}
             .Section-visualisation
                 map-vis
                 stream-vis
 
-        .Section#Refusals(section='refusals')
+        .Section#Refusals(section='refusals' ng-class='getColorClasses()' highlight-color='blue' base-tones='light' focus='euClose')
             .Section-story
                 h2 Refusals
                 p In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. A substantial increase of around 60% in relation to Q2 2014 was observed for refusals issued to Ukrainian nationals, 80% of whom were refused at the Polish border.

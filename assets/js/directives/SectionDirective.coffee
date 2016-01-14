@@ -30,11 +30,11 @@ class @SectionDirective
         scope.hintedCountry = ''
 
 
-        scope.unhintCountry = () ->
-            scope.hintedCountry = ''
+        scope.unhintCountry = () =>
+            scope.hintedCountry = '' if scope.selectedCountry == ''
 
-        scope.hintCountry = (country) ->
-            scope.hintedCountry = country
+        scope.hintCountry = (country) =>
+            scope.hintedCountry = country if scope.selectedCountry == ''
 
         scope.selectCountry = (country) ->
             # de-select when country is clicked again

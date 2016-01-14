@@ -53,8 +53,10 @@ class @Dataset
                         dataset[country][i] = 0
 
         # mark highlighted country
+        if dataset[opts.hinted]?
+            dataset[opts.hinted].hinted = true
         if dataset[opts.selected]?
-            dataset[opts.selected].hinted = true
+            dataset[opts.selected].selected = true
 
         # transform set to desired format
         dataset = @transformations[opts.format] dataset
@@ -77,6 +79,8 @@ class @Dataset
                             x: i
                             y: dataPoint
                     layerData.country = country
+                    layerData.hinted = data.hinted
+                    layerData.selected = data.selected
                     layers.push layerData
 
             return layers
