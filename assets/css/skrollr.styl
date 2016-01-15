@@ -1,0 +1,32 @@
+@-skrollr-keyframes follow {
+    skrollr-bottom-top {
+        height: 0vh
+        }
+    skrollr--200-bottom-top {
+        height: 0vh
+        }
+    skrollr--500-top {
+        height: 75vh
+        }
+    skrollr--600-top {
+        height: 80vh
+        }
+}
+
+.Section-heading
+    -skrollr-animation-name follow
+    transition height 0.1s
+
+@-skrollr-keyframes simpleParallax {
+    skrollr-bottom-top {
+        transform: translate3d(0,-20%,0)
+        }
+
+    skrollr-center {
+        transform: translate3d(0,0,0)
+        }
+}
+
+.Section-storyBackground
+    -skrollr-animation-name simpleParallax
+    transition transform 0.1s

@@ -9,3 +9,5 @@ app
 
     .directive 'mapVis', ['$compile', ($compile) ->
         new DatamapDirective($compile)]
+
+skrollr.init()
