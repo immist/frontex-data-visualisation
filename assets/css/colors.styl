@@ -1,0 +1,55 @@
+@import '_settings'
+
+// Color Schemes
+.Section.dark
+    .Sidebar
+        background transparentify(base02, base02, 0.7)
+        &:before
+            background transparentify(base02, base02, 0.3)
+    .Section-heading
+        background base3
+        color base02
+    .datamaps-subunits
+        fill base01
+    background base02
+    color base2
+
+    text
+    .stream-layer
+        fill base3
+    .datamaps-hoverover .hoverinfo
+        background base03
+        color base3
+
+.Section.light
+    .Sidebar
+        background transparentify(base2, base2, 0.8)
+        &:before
+            background transparentify(base2, base2, 0.4)
+    .Section-heading
+        background base03
+        color base2
+    .datamaps-subunits
+        fill base1
+    background base2
+    color base02
+
+    text
+    .stream-layer
+        fill base03
+    .datamaps-hoverover .hoverinfo
+        background base3
+        color base03
+
+.Section.red
+    .datamaps-subunit.highlighted
+        fill red !important
+.Section.blue
+    .datamaps-subunit.highlighted
+        fill blue !important
+.Section.magenta
+    .datamaps-subunit.highlighted
+        fill magenta !important
+.Section.green
+    .datamaps-subunit.highlighted
+        fill green !important

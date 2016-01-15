@@ -152,11 +152,7 @@ stream-vis
 
 
 // SECTIONS
-#Intro
-    padding vr-block(5) vr-block(5)
-    p
-        width vr-block(22)
-        padding-top vr-block(1)
+
 
 .Section
     flex-wrap wrap
@@ -164,8 +160,8 @@ stream-vis
     justify-content space-between
 
     &-story
+        padding-bottom vr-block(5)
         relative()
-        width vr-block(45)
 
         background-size cover !important
         shadeBackground()
@@ -177,6 +173,7 @@ stream-vis
             padding-bottom vr-block(1)
     &-text
         padding vr-block(5) vr-block(5) vr-block(3) vr-block(18)
+        width vr-block(45)
 
 
     &-visualisation
@@ -192,61 +189,42 @@ stream-vis
 .Section
     overflow hidden
 #Intro
+    padding vr-block(5) vr-block(5)
+    p
+        width vr-block(22)
+        padding-top vr-block(1)
+        relative()
+        z-index 100
+        color base02
     background base3
     color base01
+    &:before
+        content ''
+        absolute top 0 left 0
+        size 100%
+        display block
+        background-size cover
+        background-image url('../img/refugee-boat.jpg')
+        opacity 0.2
 
+.Section-story
+    &:before
+        content ''
+        absolute top 0 left 0
+        size 100% 150%
+        display block
+        background-size cover
+        opacity 0.4
+        #Crossings &
+            background-image url('../img/fence.jpg')
+        #Refusals &
+            background-image url('../img/soldiers.jpg')
+            background-position bottom
+        #Stays &
+            background-image url('../img/syrian-refugees.jpg')
+        #ReturnDecisions &
+            background-image url('../img/refugee-camp.jpg')
+        #EffectiveReturns &
+            background-image url('../img/yazidi-refugees.jpg')
+            background-position bottom
 
-
-// Color Schemes
-.Section.dark
-    .Sidebar
-        background transparentify(base02, base02, 0.7)
-        &:before
-            background transparentify(base02, base02, 0.3)
-    .Section-heading
-        background base3
-        color base02
-    .datamaps-subunits
-        fill base01
-    background base02
-    color base2
-
-    text
-    .stream-layer
-        fill base3
-    .datamaps-hoverover .hoverinfo
-        background base03
-        color base3
-
-.Section.light
-    .Sidebar
-        background transparentify(base2, base2, 0.8)
-        &:before
-            background transparentify(base2, base2, 0.4)
-    .Section-heading
-        background base03
-        color base2
-    .datamaps-subunits
-        fill base1
-    background base2
-    color base02
-
-    text
-    .stream-layer
-        fill base03
-    .datamaps-hoverover .hoverinfo
-        background base3
-        color base03
-
-.Section.red
-    .datamaps-subunit.highlighted
-        fill red !important
-.Section.blue
-    .datamaps-subunit.highlighted
-        fill blue !important
-.Section.magenta
-    .datamaps-subunit.highlighted
-        fill magenta !important
-.Section.green
-    .datamaps-subunit.highlighted
-        fill green !important
