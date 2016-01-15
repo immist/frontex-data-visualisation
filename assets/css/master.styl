@@ -16,13 +16,6 @@ shadeBackground()
     *
         relative()
         z-index 100
-    &:before
-        absolute top 0 left 0
-        size 100%
-
-        z-index 10
-        content ''
-        display block
 
 
 
@@ -39,25 +32,41 @@ body
     width 1920px
     margin 0 auto
 
-h2
+h1
     text-transform uppercase
-    letter-spacing vr-block(0.07)
+    width 0
 
 
 .Section-visualisation
     relative()
-    min-height vr-block(20)
+    min-height vr-block(24)
 
 map-vis
     display block
     size vr-block(13)
-    relative()
     size 100% 
     absolute top 0 left 0
     z-index 100
 
-stream-vis
+sidebarWidth = 12
+.Sidebar
+    pointer-events none
+    absolute top vr-block(-5) right vr-block(2)
     z-index 200
+    width vr-block(sidebarWidth + 3)
+    padding vr-block(4) vr-block(3) vr-block(2) vr-block(0)
+    height vr-block(30)
+    p
+        margin-top vr-block(13)
+    &:before
+        absolute top 0 left vr-block(-3)
+        display block
+        content ''
+        width vr-block(3)
+        height 100%
+        pointer-events none
+        z-index -1
+
 
 
 
@@ -65,6 +74,8 @@ stream-vis
 
 .datamaps-subunit
     stroke-width 0.2 !important
+.interactable-country
+    cursor pointer
 
 
 .datamaps-hoverover .hoverinfo
@@ -84,9 +95,8 @@ stream-vis
 // STREAM GRAPH
 
 stream-vis
-    margin 0 vr-block(1) vr-block(3) auto
     overflow visible
-    size vr-block(15) vr-block(10)
+    size vr-block(sidebarWidth) vr-block(10)
     display block
     float right
     .&-svg
@@ -104,6 +114,8 @@ stream-vis
     display block
     svg
         display block
+    .Graph
+        pointer-events all
 
 .axisY
     .tick
@@ -117,10 +129,11 @@ stream-vis
     .tick
         line
             transition 0.1s
+            stroke white
             stroke-width 1px
             stroke-dasharray 1px 5px
         text
-            transform translateY(30px)
+            transform translate3d(vr-block(1.2), vr-block(0.8), 0) rotate(30deg)
             font-family monospace
 .tick
     &:hover
@@ -139,6 +152,11 @@ stream-vis
 
 
 // SECTIONS
+#Intro
+    padding vr-block(5) vr-block(5)
+    p
+        width vr-block(22)
+        padding-top vr-block(1)
 
 .Section
     flex-wrap wrap
@@ -146,23 +164,48 @@ stream-vis
     justify-content space-between
 
     &-story
-        width 100%
+        relative()
+        width vr-block(45)
+
         background-size cover !important
         shadeBackground()
+
+        .Section-heading
+            absolute top vr-block(4) left 0
+            margin-left vr-block(5)
+            width vr-block(10)
+            padding-bottom vr-block(1)
+    &-text
+        padding vr-block(5) vr-block(5) vr-block(3) vr-block(18)
+
+
     &-visualisation
         display flex
         justify-content space-between
 
+
+#Outro
+    padding vr-block(5)
+    background base2
+    color base03
 #Intro
 .Section
-    overflow auto
-    border-bottom 1px solid base02
-    &-story
-        padding vr-block(5) vr-block(5)
+    overflow hidden
+#Intro
+    background base3
+    color base01
+
 
 
 // Color Schemes
 .Section.dark
+    .Sidebar
+        background transparentify(base02, base02, 0.7)
+        &:before
+            background transparentify(base02, base02, 0.3)
+    .Section-heading
+        background base3
+        color base02
     .datamaps-subunits
         fill base01
     background base02
@@ -176,6 +219,13 @@ stream-vis
         color base3
 
 .Section.light
+    .Sidebar
+        background transparentify(base2, base2, 0.8)
+        &:before
+            background transparentify(base2, base2, 0.4)
+    .Section-heading
+        background base03
+        color base2
     .datamaps-subunits
         fill base1
     background base2
@@ -194,3 +244,9 @@ stream-vis
 .Section.blue
     .datamaps-subunit.highlighted
         fill blue !important
+.Section.magenta
+    .datamaps-subunit.highlighted
+        fill magenta !important
+.Section.green
+    .datamaps-subunit.highlighted
+        fill green !important

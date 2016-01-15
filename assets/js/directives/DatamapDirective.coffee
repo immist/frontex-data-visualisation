@@ -3,8 +3,8 @@ class @DatamapDirective
     scope: false
 
     viewboxes:
-        euClose: '469 134 87 89'
-        euMiddleEast: '447 160 139 89'
+        euClose: '490 134 87 89'
+        euMiddleEast: '490 160 139 89'
     link: (scope, el, attrs) =>
 
         scope.$watch 'dataset', =>

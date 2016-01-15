@@ -9,43 +9,68 @@ block content
 
         .Section#Crossings(section='crossings' ng-class='getColorClasses()' highlight-color='red' base-tones='dark' focus='euMiddleEast')
             .Section-story
-                h2 Crossings
-                p Detections of crossings at individual Border Crossing Points reported by nationality. "Border Crossing Point" means any crossing point authorized by the competent authorities for the crossing of external borders (Article 2 sec. 8 of the Schengen Borders Code). 
+                .Section-heading: h2 Crossings
+                .Section-text
+                    h5 Over 170.000 Detections of illegal border-crossing in Q2 2015
+                    p This is the highest number of illegal border-crossings since FRAN data collection began in 2007. A record number of 68.178 illegal border-crossings were reported from the EU’s external borders with Turkey, which represents an increase of over 380% compared with the previous quarter and more than 670% in relation to the same period of 2014. With 40% and 30%, Afghans and Syrians were the most detected nationalities of migrants detected on the Western Balkan route.
                 .selected SELECTED COUNTRY {{selectedCountry}}
                 .selected hinted COUNTRY {{hintedCountry}}
             .Section-visualisation
                 map-vis
-                stream-vis
+                .Sidebar
+                    stream-vis
+                    p Detections of crossings at individual Border Crossing Points reported by nationality. "Border Crossing Point" means any crossing point authorized by the competent authorities for the crossing of external borders (Article 2 sec. 8 of the Schengen Borders Code). 
 
         .Section#Refusals(section='refusals' ng-class='getColorClasses()' highlight-color='blue' base-tones='light' focus='euClose')
             .Section-story
-                h2 Refusals
-                p In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. A substantial increase of around 60% in relation to Q2 2014 was observed for refusals issued to Ukrainian nationals, 80% of whom were refused at the Polish border.
+                .Section-heading: h2 Refusals
+                .Section-text
+                    h5 Most refusals of entry issued to Ukrainian nationalities
+                    p A substantial increase of around 60% in relation of Q2 2014 was observed for refusals issued to Ukrainian nationals, 80% of whom were refused at the Polish border. Once again, most detections of clandestine entry (almost 90%) were reported by Bulgaria, through which a large share of the migrantory flow transisting Turkey is channelled. 
             .Section-visualisation
                 map-vis
-                stream-vis
+                .Sidebar
+                    stream-vis
+                    p In Q2 2015, 28 189 refusals of entry at the EU external borders were reported, which is not a significantly higher number than both during the previous quarter and in the same period last year. A substantial increase of around 60% in relation to Q2 2014 was observed for refusals issued to Ukrainian nationals, 80% of whom were refused at the Polish border.
 
-        .Section#Stays(section='stays')
+        .Section#Stays(section='stays' ng-class='getColorClasses()' highlight-color='magenta' base-tones='dark' focus='euMiddleEast')
             .Section-story
-                h2 Illegal stayers
-                p In Q2 2015, most detections of illegal stay were related to persons leaving the EU through German airports. Compared to the same period in 2014, the reported number increased by more than one-third. The increase was to a very large extent caused by Kosovo* citizens trying to leave through German airports with- out a residence permit or a valid visa.
+                .Section-heading: h2 Illegal stayers
+                .Section-text
+                    h5 Most illegal stayers on exit detected at German airports
+                    p In Q2 2015, detections of illegal stay were almost 40% higher than during the same quarter of 2014 and amounted to more than 140 000 persons reported in the EU/ Schengen area. 
+                        br
+                        |  Also in Q2 2015 most detections of illegal stay were related to persons leaving the EU through German airports. Compared to the same period in 2014 the number increased by more than one-third. 
+
             .Section-visualisation
                 map-vis
+                .Sidebar
+                    stream-vis
+                    p In Q2 2015, most detections of illegal stay were related to persons leaving the EU through German airports. Compared to the same period in 2014, the reported number increased by more than one-third. The increase was to a very large extent caused by Kosovo* citizens trying to leave through German airports with- out a residence permit or a valid visa.
 
-        .Section#ReturnDecisions(section='returnDecisions')
+        .Section#ReturnDecisions(section='returnDecisions' ng-class='getColorClasses()' highlight-color='green' base-tones='light' focus='euMiddleEast')
             .Section-story
-                h2 Return decisions issued
-                p Foreigner return decisions are issued if residence conditions in respective EU countries are violated. The visualised numbers are return decisions issued by top ten target nationalities.
+                .Section-heading: h2 Return decisions issued
+                .Section-text
+                    h5 13% more return decision compared to Q2 2014
+                    p In Q2 2015, all indicators showed increasing trends compared with the situation a year ago. Compared with Q2 2014, detections of illegal border-crossing at the external borders increased by more than 140% and the number of asylum applicants – by two thirds. In relation to the previous quarter all indicators except for illegal border-crossing at BCPs went up, which was traditionally expected after the winter months. Furthermore, five important indicators (asylum, apprehended facilitators, detections of illegal border-crossing between BCPs, illegal stay and effective returns) reached their highest ever recorded levels since data collection for the respective indicators began. 
             .Section-visualisation
-                stream-vis
+                map-vis
+                .Sidebar
+                    stream-vis
+                    p Foreigner return decisions are issued if residence conditions in respective EU countries are violated. The visualised numbers are return decisions issued by top ten target nationalities.
 
-        .Section#EffectiveReturns(section='effectiveReturns')
+        .Section#EffectiveReturns(section='effectiveReturns' ng-class='getColorClasses()' highlight-color='magenta' base-tones='dark' focus='euMiddleEast')
             .Section-story
-                h2 Effective Returns
-                p Return is often grouped into one of two types: either voluntary or forced (see for example UKBA 2012). ‘Voluntary’ refers to any situation where the migrant returns under their free will; ‘forced’ refers to returns where the migrant is forcibly removed from the host country. The displayed data represents the number of people effectively returned to third countries by top ten target nationalities.
+                .Section-heading: h2 Effective Returns
+                .Section-text
+                    h5 Number of effective returns at the same level as in 2014
+                    p In Q2 2015, Member State authorities issued 72 168 decisions to third country nationals with an obligation to leave the EU following an administrative or judicial decision. This is 13% more than the in the previous quarter and 20% more than one year ago.
             .Section-visualisation
-                stream-vis
-
+                map-vis
+                .Sidebar
+                    stream-vis
+                    p Return is often grouped into one of two types: either voluntary or forced (see for example UKBA 2012). ‘Voluntary’ refers to any situation where the migrant returns under their free will; ‘forced’ refers to returns where the migrant is forcibly removed from the host country. The displayed data represents the number of people effectively returned to third countries by top ten target nationalities.
         #Outro
             p A project by Jan Wirth, Immanuel Sterzik and Lisa Vogt of DHBW Mosbach
             a(href='#') Source
