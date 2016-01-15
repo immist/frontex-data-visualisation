@@ -46,6 +46,7 @@ class @DatamapDirective
                 if oldCountry != ''
                     oldCountryEl = svg.select '.' + oldCountry
                     oldCountryEl.classed 'highlighted', false
+                    oldCountryEl.style 'fill', scope.getMainColor 1
                 if newCountry != ''
                     newCountryEl = svg.select '.' + newCountry
                     newCountryEl.classed 'highlighted', true
