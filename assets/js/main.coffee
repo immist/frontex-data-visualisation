@@ -18,4 +18,10 @@ app
     .filter 'camelToSpaceCase', ->
         return (string) -> string.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2")
 
+    .filter 'codeToCountryName', ->
+        countryList = new CountryList()
+        return (code) =>
+            countryList.getCountryByCode(code)
+
+
 skrollr.init()
