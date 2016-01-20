@@ -5,9 +5,6 @@ reset-css()
 typographic()
 border-box-html()
 
-grid-overlay()
-
-
 
 
 // MIXINS
@@ -65,8 +62,44 @@ sidebarWidth = 12
         pointer-events none
         z-index -1
 
+// NAVIGATION
 
+nav
+    z-index 3000
+    fixed top 0 left 0
+    display flex
+    padding vr-block(2)
+    opacity 0.5
+    transition 0.3s
+    &:hover
+        opacity 1
+    .&-heading
+        font-family 'Input sans'
+        &.nav-heading
+            margin 0
+            float left
+            width vr-block(3)
 
+    ul
+        &.nav
+            margin 0
+        list-style-type none
+        padding-left 0
+        li
+            float left
+            margin-right vr-block(1)
+
+    a
+        color base03
+        text-transform uppercase
+        letter-spacing vr-block(0.03)
+        font-weight 300
+        text-decoration none
+        background base01
+        color base3
+        pointer-events all
+        &:hover
+            background base03
 
 // MAP STYLES
 
@@ -167,6 +200,8 @@ stream-vis
     &-text
         padding vr-block(5) vr-block(5) vr-block(3) vr-block(18)
         width vr-block(45)
+        h5
+            line-height 1.5
     &-visualisation
         display flex
         justify-content space-between
@@ -192,16 +227,24 @@ stream-vis
 .Section
     overflow hidden
 #Intro
-    padding vr-block(5) vr-block(5)
+    padding vr-block(3) vr-block(5)
     p
         width vr-block(22)
         padding-top vr-block(1)
         relative()
         z-index 100
         color base02
+    .creators
+        font-family 'Input Sans'
+        font-weight 300
+        opacity 0.5
+        transition 0.3s
+        &:hover
+            opacity 1
     background base3
     color base01
     &:before
+        pointer-events none
         content ''
         absolute top 0 left 0
         size 100%

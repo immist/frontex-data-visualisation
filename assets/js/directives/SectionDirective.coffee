@@ -1,6 +1,7 @@
 class @SectionDirective
+    constructor: (@$rootScope) ->
 
-    link: (scope, element, attr) ->
+    link: (scope, element, attr) =>
         scope.focus = attr.focus
 
         # Get color scheme from directive
@@ -42,5 +43,11 @@ class @SectionDirective
                 scope.selectedCountry = ""
             else
                 scope.selectedCountry = country
+
+        if !@$rootScope.sections?
+            @$rootScope.sections = []
+        else
+            @$rootScope.sections.push attr.section
+
 
     scope: true

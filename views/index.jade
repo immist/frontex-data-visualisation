@@ -2,10 +2,15 @@ extends layout
 
 block content
     #FrontexVisualisation(ng-app='frontexVisualisationApp')
+        nav
+            ul.nav
+                .nav-heading index
+                li(ng-repeat="section in sections").nav-item
+                    a( ng-href="#{{section | capFirst}}") {{section | camelToSpaceCase}}
         #Intro
             h1 Frontex Risk Analysis Network
             p FRAN Quarterly reports are prepared by the Frontex Risk Analysis Unit and provide a regular overview of irregular migration at the EU external borders, based on the irregular migration data exchanged among Member State border-control authorities within the cooperative framework of the Frontex Risk Analysis Network (FRAN) and its subsidiary, the European Union Document-Fraud Risk Analysis Network (EDF-RAN). 
-                | This site was created by students of the DHBW Mosbach who visualised the FRAN Quarterly report of the Quarter 2 (April - June) of 2015.
+            p.creators This site was created by students of the DHBW Mosbach who visualised the FRAN Quarterly report of the Quarter 2 (April - June) of 2015.
 
         .Section#Crossings(section='crossings' ng-class='getColorClasses()' highlight-color='red' base-tones='dark' focus='euMiddleEast')
             .Section-story
