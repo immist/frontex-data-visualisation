@@ -38,7 +38,7 @@ h1
     .hinted-country
         absolute top vr-block(1) left vr-block(1)
         t-h5()
-        font-family 'Input Sans'
+        font-family $inputCondensed
         opacity 0.7
 
 
@@ -74,13 +74,13 @@ nav
     z-index 3000
     fixed top 0 left 0
     display flex
-    padding vr-block(2)
+    padding vr-block(1) vr-block(2)
     opacity 0.5
     transition 0.3s
     &:hover
         opacity 1
     .&-heading
-        font-family 'Input sans'
+        font-family $input
         &.nav-heading
             margin 0
             float left
@@ -99,7 +99,7 @@ nav
         color base03
         text-transform uppercase
         letter-spacing vr-block(0.03)
-        font-weight 300
+        padding 0 vr-block(1)
         text-decoration none
         background base01
         color base3
@@ -119,7 +119,7 @@ nav
     border none
     box-shadow none
     t-html()
-    font-family 'Input Mono'
+    font-family $input
     border-radius none
     strong
         font-weight 300
@@ -161,7 +161,7 @@ stream-vis
             stroke-dasharray 1px 5px
         text
             transform translateX(-30px)
-            font-family 'Input Sans Condensed'
+            font-family $inputCondensed
 .axisX
     .tick
         line
@@ -171,7 +171,7 @@ stream-vis
             stroke-dasharray 1px 5px
         text
             transform translate3d(vr-block(1.2), vr-block(0.8), 0) rotate(30deg)
-            font-family monospace
+            font-family $inputCondensed
 .tick
     &:hover
         line
@@ -241,7 +241,7 @@ stream-vis
         z-index 100
         color base02
     .creators
-        font-family 'Input Sans'
+        font-family $input
         font-weight 300
         opacity 0.5
         transition 0.3s

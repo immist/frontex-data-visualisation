@@ -5,6 +5,7 @@ class @DatamapDirective
     viewboxes:
         euClose: '490 134 87 89'
         euMiddleEast: '490 160 139 89'
+        westernWorld: '330 200 450 89'
     link: (scope, el, attrs) =>
 
         scope.$watch 'dataset', =>
