@@ -26,7 +26,7 @@ class @StreamGraphDirective
 
         update = (source) =>
             stack = d3.layout.stack().offset 'zero'
-            layers = stack source
+            layers = stack source.layers
 
 
             x = d3.scale.linear()
@@ -62,7 +62,7 @@ class @StreamGraphDirective
                 .y0 (d) -> y d.y0 
                 .y1 (d) -> y(d.y0 + d.y)
 
-            streams = graph.selectAll 'path'
+            streams = graph.selectAll '.stream-layer'
                 .data layers
             streams
                 .attr 'class', (d) ->
@@ -93,6 +93,42 @@ class @StreamGraphDirective
                     for el, i in els[0]
                         @$compile(el)(scope)
 
+            dots = graph.selectAll '.precision-circle'
+                .data source.sum
+
+            dots.enter().append 'circle'
+                .attr 'class', 'precision-circle'
+                .attr 'cx', (d) ->
+                    x d.x
+                .attr 'cy', (d) ->
+                    y d.y
+                .attr 'r', '7'
+                .style 'fill', scope.getMainColor(3)
+                .style 'stroke', ->
+                    scope.getBaseColor(3)
+                .on "mouseover", -> tooltip.classed "visible", 1
+                .on "mouseout", -> tooltip.classed "visible", 0
+                .on "mousemove", (d) ->
+                    tooltip
+                        .attr 'x', x d.x
+                        .text formatNumber d.y
+                        .style 'fill', scope.getMainColor(3)
+                        .style 'stroke', scope.getBaseColor(3)
+                        .style 'stroke-width',  0.1
+                        .style 'alignment-baseline', 'middle'
+                        .style 'dominant-baseline', 'central'
+
+
+            dots
+                .transition()
+                .duration @duration
+                .attr 'cx', (d) ->
+                    x d.x
+                .attr 'cy', (d) ->
+                    y d.y
+
+
+
             labels = window.data.header
             axisX = d3.svg.axis()
                 .scale x
@@ -117,6 +153,12 @@ class @StreamGraphDirective
                 .duration @duration
                 .call(axisY()
                     .tickSize(-@width, 0, 0))
+
+        tooltip = vis
+            .append("text")
+            .attr 'class', 'tooltip'
+            .style("position", "absolute")
+            .style("z-index", "10")
 
         updateGraph = =>
             update scope.dataset.get

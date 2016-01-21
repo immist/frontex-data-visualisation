@@ -36,8 +36,8 @@ h1
     min-height vr-block(24)
     z-index 100
     .hinted-country
-        absolute top vr-block(1) left vr-block(1)
-        t-h5()
+        absolute top vr-block(-0.5) left 0
+        t-h6()
         font-family $inputCondensed
         opacity 0.7
 
@@ -148,9 +148,21 @@ stream-vis
         &.hinted
             opacity 1 !important
         fill black
+    .tooltip
+        t-h4()
+        font-family $inputCondensed
+        opacity 0
+        y 10
+        transition 0.3s
+        &.visible
+            opacity 1
+            y 50
+            transform translateY(0)
+
     display block
     svg
         display block
+        position relative
     .Graph
         pointer-events all
 

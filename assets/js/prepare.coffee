@@ -3,11 +3,10 @@ window.data.refusals = {}
 window.data.crossings = {}
 
 @formatNumber = (number) ->
+    number = number.toString()
     formattedNumber = ''
-    for digit, i in number.toString()
-        digit += ' ' if i % 3 == 0
-        formattedNumber = digit + formattedNumber
-    return formattedNumber
+    rgx = /(\d+)(\d{3})/;
+    number.replace(rgx, '$1' + ' ' + '$2');
 
 
 @colors =

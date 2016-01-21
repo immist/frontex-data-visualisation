@@ -59,31 +59,41 @@ class @Dataset
             dataset[opts.selected].selected = true
 
         # transform set to desired format
-        dataset = @transformations[opts.format] dataset
-
-        return dataset
-
-
+        @transformations[opts.format] dataset
 
 
 
     transformations:
         layers: (rawData) ->
+
             layers = []
+            sum = []
+
             for country, data of rawData
                 # create each layer
                 layerData = []
-                if country != 'Total All Borders'
-                    for dataPoint, i in data
-                        layerData.push
-                            x: i
-                            y: dataPoint
-                    layerData.country = country
-                    layerData.hinted = data.hinted
-                    layerData.selected = data.selected
-                    layers.push layerData
+                for dataPoint, i in data
+                    layerData.push
+                        x: i
+                        y: dataPoint
+                layerData.country = country
+                layerData.hinted = data.hinted
+                layerData.selected = data.selected
+                layers.push layerData
 
-            return layers
+                for val, index in data
+                    if !sum[index]?
+                        sum[index] = {}
+                        sum[index].y = val
+                        sum[index].x = index
+                    else
+                        sum[index].y += val
+                # sum each country
+
+            compounds =
+                layers: layers
+                sum: sum
+            return compounds
 
 class @CountryList
 
