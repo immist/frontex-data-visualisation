@@ -51,3 +51,12 @@ class @DatamapDirective
                 if newCountry != ''
                     newCountryEl = svg.select '.' + newCountry
                     newCountryEl.classed 'highlighted', true
+            scope.$watch 'selectedCountry', (newCountry,oldCountry) =>
+                console.log 'highlighting'
+                if oldCountry != ''
+                    oldCountryEl = svg.select '.' + oldCountry
+                    oldCountryEl.classed 'highlighted', false
+                    oldCountryEl.style 'fill', scope.getMainColor 1
+                if newCountry != ''
+                    newCountryEl = svg.select '.' + newCountry
+                    newCountryEl.classed 'highlighted', true
