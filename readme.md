@@ -1,17 +1,18 @@
-# rapid-prototype
+# Frontex Data Visualisation
 
+Visualisation of the [Frontex FRAN Report Q2 2015](http://frontex.europa.eu/assets/Publications/Risk_Analysis/FRAN_Q2_2015_final.pdf). 
 
+For screen resolution 1920x1080 (not responsive).
 
-### Setup
+Live version available [here](http://frontex-data-visualisation.netlify.com/).
 
-- make sure [node.js](http://nodejs.org) and [roots](http://roots.cx) are installed
-- clone this repo down and `cd` into the folder
-- run `npm install`
-- run `roots watch`
-- ???
-- get money
+## Local setup
 
-### Deploying
+- Make sure [node.js](http://nodejs.org) and [roots](http://roots.cx) are installed
+- Clone this repo down and `cd` into the folder
+- `npm install`
+- `roots watch`
 
-- If you just want to compile the production build, run `roots compile -e production` and it will build to public.
-- To deploy your site with a single command, run `roots deploy -to XXX` with `XXX` being whichever [ship](https://github.com/carrot/ship#usage) deployer you want to use.
+## License
+Licenced under Revision 42 of the Beerware Licence.
+[FranzSkuffka](https://github.com/FranzSkuffka) and [immist](https://github.com/immist/) wrote this project. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy us a beer in return.
